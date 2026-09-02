@@ -2,27 +2,37 @@
 title: "About Me"
 ---
 
-Write a short biography here.
+I am a Master's student in Applied Economics and Data Science at the University of Pennsylvania. I received my B.S. in Accounting, Finance, and Economics from The Pennsylvania State University.
 
-Include:
-
--   Educational background
--   Professional interests
--   Technical skills
--   Career goals
+My research interests include applied economics, econometrics, industrial organization, price measurement, and consumer behavior. I am particularly interested in using large-scale datasets and quantitative methods to study empirical economic questions.
 
 ## Education
 
-Master of Applied Economics and Data Science, University of Pennsylvania (expaceted 2027) Batelor of Science, University Name 2026
+**University of Pennsylvania**  
+Master of Applied Economics and Data Science  
+Expected December 2027
 
-## Interests
+**The Pennsylvania State University**  
+B.S. in Accounting, Finance, and Economics  
+2026
 
--   Econometrics
--   Machine Learning
--   Data Analysis
+## Research Interests
 
-## Contact
+- Applied Economics
+- Econometrics
+- Industrial Organization
+- Price Measurement
+- Consumer Behavior
+- Data Analysis
 
-## student\@email.edu
+## Technical Skills
 
-------------------------------------------------------------------------
+- R
+- Python
+- Stata
+- SQL
+- Excel / VBA
+
+## Career Goals
+
+I plan to pursue doctoral study in Economics or Finance and continue developing my interests in empirical economic research.

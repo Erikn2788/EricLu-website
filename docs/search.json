@@ -1,61 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Student Name",
-    "section": "",
-    "text": "Student Name\nUniversity of Pennsylvaina\nWelcome to my personal website.\n\nQuick Links"
-  },
-  {
-    "objectID": "bio.html",
-    "href": "bio.html",
-    "title": "About Me",
-    "section": "",
-    "text": "Write a short biography here.\nInclude:"
-  },
-  {
-    "objectID": "bio.html#education",
-    "href": "bio.html#education",
-    "title": "About Me",
-    "section": "Education",
-    "text": "Education\nMaster of Applied Economics and Data Science, University of Pennsylvania (expaceted 2027) Batelor of Science, University Name 2026"
-  },
-  {
-    "objectID": "bio.html#interests",
-    "href": "bio.html#interests",
-    "title": "About Me",
-    "section": "Interests",
-    "text": "Interests\n\nEconometrics\nMachine Learning\nData Analysis"
-  },
-  {
-    "objectID": "bio.html#contact",
-    "href": "bio.html#contact",
-    "title": "About Me",
-    "section": "Contact",
-    "text": "Contact"
-  },
-  {
-    "objectID": "bio.html#studentemail.edu",
-    "href": "bio.html#studentemail.edu",
-    "title": "About Me",
-    "section": "student@email.edu",
-    "text": "student@email.edu"
-  },
-  {
-    "objectID": "blog/index.html",
-    "href": "blog/index.html",
-    "title": "Blog",
-    "section": "",
-    "text": "My First Blog Post\n\n\n\n\n\n\n\n\n\n\n\nJun 16, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nMy Second Blog Post\n\n\n\n\n\n\n\n\n\n\n\nJun 16, 2026\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "blog/posts/post1/Untitled.html",
-    "href": "blog/posts/post1/Untitled.html",
-    "title": "My First Blog Post",
-    "section": "",
-    "text": "This is my first blog post. Example \\(\\LaTeX\\) equation: \\(\\frac{1}{2}\\sum_{i=1}^nx_i\\)"
-  },
-  {
     "objectID": "resume.html",
     "href": "resume.html",
     "title": "Resume",
@@ -70,10 +14,66 @@
     "text": "Resume PDF"
   },
   {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "My First Blog Post\n\n\n\n\n\n\n\n\nJun 16, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nMy Second Blog Post\n\n\n\n\n\n\n\n\nJun 16, 2026\n\n\n\n\n\nNo matching items"
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "bio.html",
+    "href": "bio.html",
+    "title": "About Me",
+    "section": "",
+    "text": "I am a Master’s student in Applied Economics and Data Science at the University of Pennsylvania. I received my B.S. in Accounting, Finance, and Economics from The Pennsylvania State University.\nMy research interests include applied economics, econometrics, industrial organization, price measurement, and consumer behavior. I am particularly interested in using large-scale datasets and quantitative methods to study empirical economic questions."
+  },
+  {
+    "objectID": "bio.html#education",
+    "href": "bio.html#education",
+    "title": "About Me",
+    "section": "Education",
+    "text": "Education\nUniversity of Pennsylvania\nMaster of Applied Economics and Data Science\nExpected December 2027\nThe Pennsylvania State University\nB.S. in Accounting, Finance, and Economics\n2026"
+  },
+  {
+    "objectID": "bio.html#research-interests",
+    "href": "bio.html#research-interests",
+    "title": "About Me",
+    "section": "Research Interests",
+    "text": "Research Interests\n\nApplied Economics\nEconometrics\nIndustrial Organization\nPrice Measurement\nConsumer Behavior\nData Analysis"
+  },
+  {
+    "objectID": "bio.html#technical-skills",
+    "href": "bio.html#technical-skills",
+    "title": "About Me",
+    "section": "Technical Skills",
+    "text": "Technical Skills\n\nR\nPython\nStata\nSQL\nExcel / VBA"
+  },
+  {
+    "objectID": "bio.html#career-goals",
+    "href": "bio.html#career-goals",
+    "title": "About Me",
+    "section": "Career Goals",
+    "text": "Career Goals\nI plan to pursue doctoral study in Economics or Finance and continue developing my interests in empirical economic research."
+  },
+  {
+    "objectID": "blog/posts/post1/Untitled.html",
+    "href": "blog/posts/post1/Untitled.html",
+    "title": "My First Blog Post",
+    "section": "",
+    "text": "This is my first blog post. Example \\(\\LaTeX\\) equation: \\(\\frac{1}{2}\\sum_{i=1}^nx_i\\)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Eric Lu",
+    "section": "",
+    "text": "Eric Lu\nUniversity of Pennsylvaina\nWelcome to my personal website.\n\nQuick Links"
   }
 ]
