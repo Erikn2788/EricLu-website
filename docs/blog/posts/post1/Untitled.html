@@ -2,21 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-06-16">
+<meta name="dcterms.date" content="2026-09-14">
 
-<title>My First Blog Post – Eric Lu</title>
+<title>What Does a p-Value Really Mean? – Eric Lu</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -40,10 +43,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-6b423f165eeea3787de40cb4f8e821c3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-92404dd89b1444827012a9e3a58cda88.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,35 +75,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../../styles.css">
 </head>
@@ -155,9 +129,10 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">My First Blog Post</h1>
+<h1 class="title">What Does a p-Value Really Mean?</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">personal</div>
+    <div class="quarto-category">statistics</div>
+    <div class="quarto-category">econometrics</div>
     <div class="quarto-category">data-science</div>
   </div>
   </div>
@@ -170,7 +145,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 16, 2026</p>
+      <p class="date">September 14, 2026</p>
     </div>
   </div>
   
@@ -182,11 +157,70 @@ window.Quarto = {
 </header>
 
 
-<p><img src="figure1.png" class="img-fluid" width="500"></p>
-<p>This is my first blog post. Example <span class="math inline">\(\LaTeX\)</span> equation: <span class="math inline">\(\frac{1}{2}\sum_{i=1}^nx_i\)</span></p>
+<p><img src="figure1.png" class="img-fluid" width="1000"></p>
+<p>One of the most common misunderstandings in statistics is the meaning of a p-value. Suppose a researcher runs a hypothesis test and obtains a p-value of 0.03. It is tempting to say that there is only a 3% chance that the null hypothesis is true. However, this interpretation is incorrect.</p>
+<p>A p-value answers a different question.</p>
+<p>Suppose the null hypothesis is denoted by (H_0). The p-value is the probability of observing a result at least as extreme as the one in our data, <strong>assuming that the null hypothesis is true</strong>. In simplified notation,</p>
+<p>[ p = P( H_0). ]</p>
+<p>The important part is the condition “(H_0) is true.” The p-value does not directly tell us</p>
+<p>[ P(H_0 ), ]</p>
+<p>which would be the probability that the null hypothesis is true after observing the data. These two probabilities may look similar, but they answer very different questions.</p>
+<section id="a-coin-example" class="level2">
+<h2 class="anchored" data-anchor-id="a-coin-example">A Coin Example</h2>
+<p>Imagine that we want to determine whether a coin is fair. Our null hypothesis is</p>
+<p>[ H_0: p = 0.5, ]</p>
+<p>where (p) is the probability of getting heads.</p>
+<p>Now suppose we flip the coin 20 times and observe 18 heads. If the coin is actually fair, the probability of getting 18 or more heads is only about 0.02%.</p>
+<p>That makes 18 heads look very unusual under the assumption that the coin is fair.</p>
+<p>The p-value captures exactly this idea. It asks:</p>
+<blockquote class="blockquote">
+<p>If the coin really were fair, how likely would it be to observe a result this extreme or even more extreme?</p>
+</blockquote>
+<p>If we are doing a two-sided test, we would also count outcomes that are equally extreme in the opposite direction, such as getting 2 or fewer heads.</p>
+<p>A very small p-value therefore suggests that the observed data are difficult to reconcile with the null hypothesis.</p>
+<p>However, even a very small p-value does not prove that the null hypothesis is false. It only tells us that the data would be unusual if the null hypothesis were true.</p>
+</section>
+<section id="what-a-p-value-does-not-mean" class="level2">
+<h2 class="anchored" data-anchor-id="what-a-p-value-does-not-mean">What a p-Value Does Not Mean</h2>
+<p>A p-value is often misinterpreted. In particular, it does <strong>not</strong> mean:</p>
+<ul>
+<li>the probability that the null hypothesis is true;</li>
+<li>the probability that the result happened “by chance”;</li>
+<li>the size or importance of an effect;</li>
+<li>the probability that the study will replicate.</li>
+</ul>
+<p>For example, a statistically significant result can still have a very small economic effect. With a sufficiently large sample, even a tiny difference can produce a small p-value.</p>
+</section>
+<section id="what-does-0.05-mean" class="level2">
+<h2 class="anchored" data-anchor-id="what-does-0.05-mean">What Does 0.05 Mean?</h2>
+<p>A common convention is to call a result “statistically significant” when the p-value is below 0.05. This cutoff is useful as a rule of thumb, but it is not a magical boundary between truth and falsehood.</p>
+<p>A p-value of 0.049 and a p-value of 0.051 represent almost the same amount of evidence, even though one may be labeled statistically significant and the other may not.</p>
+<p>This is why researchers should not focus only on whether a p-value crosses the 0.05 threshold. Effect sizes, confidence intervals, sample size, and the economic meaning of the result also matter.</p>
+</section>
+<section id="why-the-concept-feels-unintuitive" class="level2">
+<h2 class="anchored" data-anchor-id="why-the-concept-feels-unintuitive">Why the Concept Feels Unintuitive</h2>
+<p>The p-value is easy to misunderstand because people naturally want to ask:</p>
+<blockquote class="blockquote">
+<p>“Given the data, how likely is my hypothesis to be true?”</p>
+</blockquote>
+<p>But the p-value asks the reverse question:</p>
+<blockquote class="blockquote">
+<p>“Assuming my hypothesis is true, how unusual are these data?”</p>
+</blockquote>
+<p>That reversal in conditioning is the main reason the concept is unintuitive.</p>
+</section>
+<section id="the-main-takeaway" class="level2">
+<h2 class="anchored" data-anchor-id="the-main-takeaway">The Main Takeaway</h2>
+<p>The easiest way to remember the meaning of a p-value is:</p>
+<blockquote class="blockquote">
+<p>A p-value measures how surprising the data are under the null hypothesis.</p>
+</blockquote>
+<p>It does <strong>not</strong> measure the probability that the null hypothesis itself is true.</p>
+<p>A p-value is therefore one piece of evidence about how well the data fit a hypothesis, not a direct probability that the hypothesis is right or wrong.</p>
 <hr>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -593,7 +627,7 @@ window.Quarto = {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><img src="../../..\images/UniversityofPennsylvania_FullLogo_RGB.png" class="img-fluid" width="100"></p>
+<p><img src="../../../images/UniversityofPennsylvania_FullLogo_RGB.png" class="img-fluid" width="100"></p>
 </div>   
     <div class="nav-footer-center">
 <p>© 2026 Eric Lu</p>
