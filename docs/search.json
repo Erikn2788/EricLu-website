@@ -14,11 +14,67 @@
     "text": "Resume PDF"
   },
   {
+    "objectID": "blog/posts/post2/index.html",
+    "href": "blog/posts/post2/index.html",
+    "title": "What Skills Show Up Most in Data, AI, and ML Jobs?",
+    "section": "",
+    "text": "There are a lot of things someone interested in data or AI could spend time learning. Python and SQL are obvious examples, but there are also cloud platforms, databases, machine learning libraries, and newer tools related to LLMs.\nInstead of looking at another list of “top skills,” I wanted to see what employers were actually mentioning in job posts.\nMy question was:\nI used R and rvest to scrape the September 2026 Hacker News “Who is hiring?” thread."
+  },
+  {
+    "objectID": "blog/posts/post2/index.html#getting-the-data",
+    "href": "blog/posts/post2/index.html#getting-the-data",
+    "title": "What Skills Show Up Most in Data, AI, and ML Jobs?",
+    "section": "Getting the Data",
+    "text": "Getting the Data\nThe Hacker News thread works well for this because the job posts are available directly on the webpage and do not require a login.\nI first downloaded the page and saved a copy of the HTML.\n\nlibrary(rvest)\nlibrary(here)\nlibrary(xml2)\n\nhn_url &lt;- \"https://news.ycombinator.com/item?id=49522897\"\n\npage &lt;- read_html(hn_url)\n\nraw_html_file &lt;- here(\n  \"data\",\n  \"raw\",\n  \"hn_who_is_hiring_sep2026.html\"\n)\n\nxml2::write_html(\n  page,\n  raw_html_file\n)\n\nSaving the HTML was useful because I could keep working with the same version of the page instead of downloading it again every time I ran the code.\nI then selected the comment rows from the page.\n\ncomment_rows &lt;- page |&gt;\n  html_elements(\"tr.athing.comtr\")\n\nHacker News includes both original job posts and replies underneath them. I used the comment indentation level to remove the replies and keep only the top-level posts.\nAfter doing that, I had 261 hiring posts.\nOne thing to keep in mind is that one post can advertise more than one position. Because of that, I treat each company post as one observation rather than each individual job opening."
+  },
+  {
+    "objectID": "blog/posts/post2/index.html#finding-data-ai-and-ml-jobs",
+    "href": "blog/posts/post2/index.html#finding-data-ai-and-ml-jobs",
+    "title": "What Skills Show Up Most in Data, AI, and ML Jobs?",
+    "section": "Finding Data, AI, and ML Jobs",
+    "text": "Finding Data, AI, and ML Jobs\nMy first idea was to search the entire job description for words such as “AI,” “data,” and “machine learning.” The problem is that this can include posts that are not actually hiring for those types of roles.\nFor example, a company could mention AI when describing its product but only be hiring a general software engineer.\nTo make the filter more specific, I only looked at the first 350 characters of each post. The beginning usually contains the company name and the positions being advertised.\nI then searched that section for titles such as Data Scientist, Data Engineer, Data Analyst, Machine Learning Engineer, AI Engineer, and Research Scientist.\n\njobs_raw &lt;- jobs_raw |&gt;\n  mutate(\n    role_zone = str_sub(text, 1, 350)\n  )\n\ndata_jobs &lt;- jobs_raw |&gt;\n  filter(\n    str_detect(\n      role_zone,\n      data_role_pattern\n    )\n  )\n\nThis left me with 39 Data, AI, or ML-related hiring posts out of the original 261.\nThe filtering was done automatically using the same rule for every post."
+  },
+  {
+    "objectID": "blog/posts/post2/index.html#which-technologies-show-up-most",
+    "href": "blog/posts/post2/index.html#which-technologies-show-up-most",
+    "title": "What Skills Show Up Most in Data, AI, and ML Jobs?",
+    "section": "Which Technologies Show Up Most?",
+    "text": "Which Technologies Show Up Most?\nFor those posts, I searched the full text for a set of technologies such as Python, SQL, AWS, GCP, PostgreSQL, Docker, Kubernetes, PyTorch, and LLMs.\nI counted each technology only once per post. So if one company mentioned Python several times, it still only counted as one Python observation.\nHere is what I found:\n\n\n\n\n\nTechnologies mentioned most often in Data, AI, and ML-related Hacker News hiring posts.\n\n\n\n\nPython stands out pretty clearly. It appeared in 19 of the 39 posts, or about 48.7%.\nLLMs were second at about 35.9%.\nGCP, PostgreSQL, and PyTorch each appeared in about 12.8% of the posts.\nOne result I did not expect was SQL. The exact word “SQL” only appeared in about 7.7% of the posts.\nThat does not mean SQL is unimportant. Some companies listed PostgreSQL or Snowflake instead of explicitly writing “SQL.” I kept them separate because I wanted the results to reflect what was actually written in the posts."
+  },
+  {
+    "objectID": "blog/posts/post2/index.html#what-i-would-learn-first",
+    "href": "blog/posts/post2/index.html#what-i-would-learn-first",
+    "title": "What Skills Show Up Most in Data, AI, and ML Jobs?",
+    "section": "What I Would Learn First",
+    "text": "What I Would Learn First\nIf I were using these results to decide what to study, Python would be the easiest place to start. It showed up in almost half of the relevant posts and can be used across data science, machine learning, and data engineering.\nThe number of LLM mentions also stood out to me. More than one-third of the posts mentioned LLM-related technology, which shows how common it has become in this particular group of tech companies.\nAfter Python, I would probably focus on a mix of database and cloud skills rather than trying to learn every machine learning library at once. PostgreSQL, GCP, AWS, and Azure all appeared in the sample.\nFor someone more interested in AI and machine learning specifically, PyTorch and experience working with LLMs also seem useful based on these postings."
+  },
+  {
+    "objectID": "blog/posts/post2/index.html#limitations",
+    "href": "blog/posts/post2/index.html#limitations",
+    "title": "What Skills Show Up Most in Data, AI, and ML Jobs?",
+    "section": "Limitations",
+    "text": "Limitations\nThis is a fairly small sample. It only uses one month of Hacker News job posts, and Hacker News has a lot of startups and technology companies. The results should not be treated as a picture of the entire job market.\nThe posts also come from different countries, so this is not specifically a study of U.S. employers.\nAnother limitation is that a technology appearing in a post does not always mean it is required. Sometimes companies describe their current tech stack even when they are not asking applicants to already know every tool.\nFinally, my filter depends on specific job titles. A relevant job with an unusual title could be missed."
+  },
+  {
+    "objectID": "blog/posts/post2/index.html#takeaway",
+    "href": "blog/posts/post2/index.html#takeaway",
+    "title": "What Skills Show Up Most in Data, AI, and ML Jobs?",
+    "section": "Takeaway",
+    "text": "Takeaway\nFor this Hacker News sample, Python was by far the most commonly mentioned technology in Data, AI, and ML-related hiring posts. LLMs also appeared surprisingly often, while cloud platforms, databases, and machine learning tools showed up across a smaller share of posts.\nThe main thing I took from this is that looking directly at job postings can be more useful than relying on generic lists of “skills you need.” It gives a more concrete idea of what companies are actually mentioning right now."
+  },
+  {
+    "objectID": "blog/posts/post2/index.html#source",
+    "href": "blog/posts/post2/index.html#source",
+    "title": "What Skills Show Up Most in Data, AI, and ML Jobs?",
+    "section": "Source",
+    "text": "Source\nHacker News, Ask HN: Who is hiring? (September 2026)."
+  },
+  {
     "objectID": "blog/index.html",
     "href": "blog/index.html",
     "title": "Blog",
     "section": "",
-    "text": "What Does a p-Value Really Mean?\n\n\n\n\n\n\n\n\nSep 14, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nMy Second Blog Post\n\n\n\n\n\n\n\n\nInvalid Date\n\n\n\n\n\nNo matching items"
+    "text": "What Skills Show Up Most in Data, AI, and ML Jobs?\n\n\n\n\n\n\n\n\nSep 20, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Does a p-Value Really Mean?\n\n\n\n\n\n\n\n\nSep 14, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",

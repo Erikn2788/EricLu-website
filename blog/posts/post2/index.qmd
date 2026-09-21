@@ -1,9 +1,181 @@
 ---
-title: "My Second Blog Post"
-date: Pending
+title: "What Skills Show Up Most in Data, AI, and ML Jobs?"
+date: 2026-09-20
 categories:
-  - opinion
-  - labor market
+  - data-science
+  - web-scraping
+  - jobs
+  - r
 ---
 
-## This is my second blog post.
+```{r}
+#| label: setup
+#| include: false
+
+library(tidyverse)
+library(here)
+
+jobs_raw <- read_csv(
+  here("data", "derived", "hn_jobs_top_level.csv"),
+  show_col_types = FALSE
+)
+
+data_jobs <- read_csv(
+  here("data", "derived", "hn_data_jobs.csv"),
+  show_col_types = FALSE
+)
+
+skill_results <- read_csv(
+  here("data", "derived", "hn_skill_frequency.csv"),
+  show_col_types = FALSE
+)
+```
+
+There are a lot of things someone interested in data or AI could spend time learning. Python and SQL are obvious examples, but there are also cloud platforms, databases, machine learning libraries, and newer tools related to LLMs.
+
+Instead of looking at another list of “top skills,” I wanted to see what employers were actually mentioning in job posts.
+
+My question was:
+
+> **What technical skills and technologies show up most often in Data, AI, and Machine Learning hiring posts?**
+
+I used R and `rvest` to scrape the September 2026 Hacker News **“Who is hiring?”** thread.
+
+## Getting the Data
+
+The Hacker News thread works well for this because the job posts are available directly on the webpage and do not require a login.
+
+I first downloaded the page and saved a copy of the HTML.
+
+```{r}
+#| eval: false
+
+library(rvest)
+library(here)
+library(xml2)
+
+hn_url <- "https://news.ycombinator.com/item?id=49522897"
+
+page <- read_html(hn_url)
+
+raw_html_file <- here(
+  "data",
+  "raw",
+  "hn_who_is_hiring_sep2026.html"
+)
+
+xml2::write_html(
+  page,
+  raw_html_file
+)
+```
+
+Saving the HTML was useful because I could keep working with the same version of the page instead of downloading it again every time I ran the code.
+
+I then selected the comment rows from the page.
+
+```{r}
+#| eval: false
+
+comment_rows <- page |>
+  html_elements("tr.athing.comtr")
+```
+
+Hacker News includes both original job posts and replies underneath them. I used the comment indentation level to remove the replies and keep only the top-level posts.
+
+After doing that, I had **`r nrow(jobs_raw)` hiring posts**.
+
+One thing to keep in mind is that one post can advertise more than one position. Because of that, I treat each company post as one observation rather than each individual job opening.
+
+## Finding Data, AI, and ML Jobs
+
+My first idea was to search the entire job description for words such as “AI,” “data,” and “machine learning.” The problem is that this can include posts that are not actually hiring for those types of roles.
+
+For example, a company could mention AI when describing its product but only be hiring a general software engineer.
+
+To make the filter more specific, I only looked at the first 350 characters of each post. The beginning usually contains the company name and the positions being advertised.
+
+I then searched that section for titles such as Data Scientist, Data Engineer, Data Analyst, Machine Learning Engineer, AI Engineer, and Research Scientist.
+
+```{r}
+#| eval: false
+
+jobs_raw <- jobs_raw |>
+  mutate(
+    role_zone = str_sub(text, 1, 350)
+  )
+
+data_jobs <- jobs_raw |>
+  filter(
+    str_detect(
+      role_zone,
+      data_role_pattern
+    )
+  )
+```
+
+This left me with **`r nrow(data_jobs)` Data, AI, or ML-related hiring posts** out of the original **`r nrow(jobs_raw)`**.
+
+The filtering was done automatically using the same rule for every post.
+
+## Which Technologies Show Up Most?
+
+For those posts, I searched the full text for a set of technologies such as Python, SQL, AWS, GCP, PostgreSQL, Docker, Kubernetes, PyTorch, and LLMs.
+
+I counted each technology only once per post. So if one company mentioned Python several times, it still only counted as one Python observation.
+
+Here is what I found:
+
+```{r}
+#| label: skill-plot
+#| echo: false
+#| out-width: 100%
+#| fig-cap: "Technologies mentioned most often in Data, AI, and ML-related Hacker News hiring posts."
+
+knitr::include_graphics(
+  here(
+    "results",
+    "hn_data_job_skills.png"
+  )
+)
+```
+
+Python stands out pretty clearly. It appeared in **`r skill_results |> filter(skill == "Python") |> pull(n_posts)` of the `r nrow(data_jobs)` posts**, or about **`r scales::percent(skill_results |> filter(skill == "Python") |> pull(share), accuracy = 0.1)`**.
+
+LLMs were second at about **`r scales::percent(skill_results |> filter(skill == "LLMs") |> pull(share), accuracy = 0.1)`**.
+
+GCP, PostgreSQL, and PyTorch each appeared in about **`r scales::percent(skill_results |> filter(skill == "GCP") |> pull(share), accuracy = 0.1)`** of the posts.
+
+One result I did not expect was SQL. The exact word “SQL” only appeared in about **`r scales::percent(skill_results |> filter(skill == "SQL") |> pull(share), accuracy = 0.1)`** of the posts.
+
+That does not mean SQL is unimportant. Some companies listed PostgreSQL or Snowflake instead of explicitly writing “SQL.” I kept them separate because I wanted the results to reflect what was actually written in the posts.
+
+## What I Would Learn First
+
+If I were using these results to decide what to study, Python would be the easiest place to start. It showed up in almost half of the relevant posts and can be used across data science, machine learning, and data engineering.
+
+The number of LLM mentions also stood out to me. More than one-third of the posts mentioned LLM-related technology, which shows how common it has become in this particular group of tech companies.
+
+After Python, I would probably focus on a mix of database and cloud skills rather than trying to learn every machine learning library at once. PostgreSQL, GCP, AWS, and Azure all appeared in the sample.
+
+For someone more interested in AI and machine learning specifically, PyTorch and experience working with LLMs also seem useful based on these postings.
+
+## Limitations
+
+This is a fairly small sample. It only uses one month of Hacker News job posts, and Hacker News has a lot of startups and technology companies. The results should not be treated as a picture of the entire job market.
+
+The posts also come from different countries, so this is not specifically a study of U.S. employers.
+
+Another limitation is that a technology appearing in a post does not always mean it is required. Sometimes companies describe their current tech stack even when they are not asking applicants to already know every tool.
+
+Finally, my filter depends on specific job titles. A relevant job with an unusual title could be missed.
+
+## Takeaway
+
+For this Hacker News sample, Python was by far the most commonly mentioned technology in Data, AI, and ML-related hiring posts. LLMs also appeared surprisingly often, while cloud platforms, databases, and machine learning tools showed up across a smaller share of posts.
+
+The main thing I took from this is that looking directly at job postings can be more useful than relying on generic lists of “skills you need.” It gives a more concrete idea of what companies are actually mentioning right now.
+
+## Source
+
+Hacker News, *Ask HN: Who is hiring? (September 2026)*.

@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2026-09-20">
 
-<title>My Second Blog Post – Eric Lu</title>
+<title>What Skills Show Up Most in Data, AI, and ML Jobs? – Eric Lu</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -128,10 +164,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">My Second Blog Post</h1>
+<h1 class="title">What Skills Show Up Most in Data, AI, and ML Jobs?</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">opinion</div>
-    <div class="quarto-category">labor market</div>
+    <div class="quarto-category">data-science</div>
+    <div class="quarto-category">web-scraping</div>
+    <div class="quarto-category">jobs</div>
+    <div class="quarto-category">r</div>
   </div>
   </div>
 
@@ -143,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Invalid Date</p>
+      <p class="date">September 20, 2026</p>
     </div>
   </div>
   
@@ -155,8 +193,113 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="this-is-my-second-blog-post." class="level2">
-<h2 class="anchored" data-anchor-id="this-is-my-second-blog-post.">This is my second blog post.</h2>
+<p>There are a lot of things someone interested in data or AI could spend time learning. Python and SQL are obvious examples, but there are also cloud platforms, databases, machine learning libraries, and newer tools related to LLMs.</p>
+<p>Instead of looking at another list of “top skills,” I wanted to see what employers were actually mentioning in job posts.</p>
+<p>My question was:</p>
+<blockquote class="blockquote">
+<p><strong>What technical skills and technologies show up most often in Data, AI, and Machine Learning hiring posts?</strong></p>
+</blockquote>
+<p>I used R and <code>rvest</code> to scrape the September 2026 Hacker News <strong>“Who is hiring?”</strong> thread.</p>
+<section id="getting-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="getting-the-data">Getting the Data</h2>
+<p>The Hacker News thread works well for this because the job posts are available directly on the webpage and do not require a login.</p>
+<p>I first downloaded the page and saved a copy of the HTML.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xml2)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>hn_url <span class="ot">&lt;-</span> <span class="st">"https://news.ycombinator.com/item?id=49522897"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>page <span class="ot">&lt;-</span> <span class="fu">read_html</span>(hn_url)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>raw_html_file <span class="ot">&lt;-</span> <span class="fu">here</span>(</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"data"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"raw"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="st">"hn_who_is_hiring_sep2026.html"</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>xml2<span class="sc">::</span><span class="fu">write_html</span>(</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  page,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  raw_html_file</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Saving the HTML was useful because I could keep working with the same version of the page instead of downloading it again every time I ran the code.</p>
+<p>I then selected the comment rows from the page.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>comment_rows <span class="ot">&lt;-</span> page <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">html_elements</span>(<span class="st">"tr.athing.comtr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Hacker News includes both original job posts and replies underneath them. I used the comment indentation level to remove the replies and keep only the top-level posts.</p>
+<p>After doing that, I had <strong>261 hiring posts</strong>.</p>
+<p>One thing to keep in mind is that one post can advertise more than one position. Because of that, I treat each company post as one observation rather than each individual job opening.</p>
+</section>
+<section id="finding-data-ai-and-ml-jobs" class="level2">
+<h2 class="anchored" data-anchor-id="finding-data-ai-and-ml-jobs">Finding Data, AI, and ML Jobs</h2>
+<p>My first idea was to search the entire job description for words such as “AI,” “data,” and “machine learning.” The problem is that this can include posts that are not actually hiring for those types of roles.</p>
+<p>For example, a company could mention AI when describing its product but only be hiring a general software engineer.</p>
+<p>To make the filter more specific, I only looked at the first 350 characters of each post. The beginning usually contains the company name and the positions being advertised.</p>
+<p>I then searched that section for titles such as Data Scientist, Data Engineer, Data Analyst, Machine Learning Engineer, AI Engineer, and Research Scientist.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>jobs_raw <span class="ot">&lt;-</span> jobs_raw <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">role_zone =</span> <span class="fu">str_sub</span>(text, <span class="dv">1</span>, <span class="dv">350</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>data_jobs <span class="ot">&lt;-</span> jobs_raw <span class="sc">|&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_detect</span>(</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>      role_zone,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      data_role_pattern</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This left me with <strong>39 Data, AI, or ML-related hiring posts</strong> out of the original <strong>261</strong>.</p>
+<p>The filtering was done automatically using the same rule for every post.</p>
+</section>
+<section id="which-technologies-show-up-most" class="level2">
+<h2 class="anchored" data-anchor-id="which-technologies-show-up-most">Which Technologies Show Up Most?</h2>
+<p>For those posts, I searched the full text for a set of technologies such as Python, SQL, AWS, GCP, PostgreSQL, Docker, Kubernetes, PyTorch, and LLMs.</p>
+<p>I counted each technology only once per post. So if one company mentioned Python several times, it still only counted as one Python observation.</p>
+<p>Here is what I found:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../results/hn_data_job_skills.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Technologies mentioned most often in Data, AI, and ML-related Hacker News hiring posts.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Python stands out pretty clearly. It appeared in <strong>19 of the 39 posts</strong>, or about <strong>48.7%</strong>.</p>
+<p>LLMs were second at about <strong>35.9%</strong>.</p>
+<p>GCP, PostgreSQL, and PyTorch each appeared in about <strong>12.8%</strong> of the posts.</p>
+<p>One result I did not expect was SQL. The exact word “SQL” only appeared in about <strong>7.7%</strong> of the posts.</p>
+<p>That does not mean SQL is unimportant. Some companies listed PostgreSQL or Snowflake instead of explicitly writing “SQL.” I kept them separate because I wanted the results to reflect what was actually written in the posts.</p>
+</section>
+<section id="what-i-would-learn-first" class="level2">
+<h2 class="anchored" data-anchor-id="what-i-would-learn-first">What I Would Learn First</h2>
+<p>If I were using these results to decide what to study, Python would be the easiest place to start. It showed up in almost half of the relevant posts and can be used across data science, machine learning, and data engineering.</p>
+<p>The number of LLM mentions also stood out to me. More than one-third of the posts mentioned LLM-related technology, which shows how common it has become in this particular group of tech companies.</p>
+<p>After Python, I would probably focus on a mix of database and cloud skills rather than trying to learn every machine learning library at once. PostgreSQL, GCP, AWS, and Azure all appeared in the sample.</p>
+<p>For someone more interested in AI and machine learning specifically, PyTorch and experience working with LLMs also seem useful based on these postings.</p>
+</section>
+<section id="limitations" class="level2">
+<h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
+<p>This is a fairly small sample. It only uses one month of Hacker News job posts, and Hacker News has a lot of startups and technology companies. The results should not be treated as a picture of the entire job market.</p>
+<p>The posts also come from different countries, so this is not specifically a study of U.S. employers.</p>
+<p>Another limitation is that a technology appearing in a post does not always mean it is required. Sometimes companies describe their current tech stack even when they are not asking applicants to already know every tool.</p>
+<p>Finally, my filter depends on specific job titles. A relevant job with an unusual title could be missed.</p>
+</section>
+<section id="takeaway" class="level2">
+<h2 class="anchored" data-anchor-id="takeaway">Takeaway</h2>
+<p>For this Hacker News sample, Python was by far the most commonly mentioned technology in Data, AI, and ML-related hiring posts. LLMs also appeared surprisingly often, while cloud platforms, databases, and machine learning tools showed up across a smaller share of posts.</p>
+<p>The main thing I took from this is that looking directly at job postings can be more useful than relying on generic lists of “skills you need.” It gives a more concrete idea of what companies are actually mentioning right now.</p>
+</section>
+<section id="source" class="level2">
+<h2 class="anchored" data-anchor-id="source">Source</h2>
+<p>Hacker News, <em>Ask HN: Who is hiring? (September 2026)</em>.</p>
 
 
 </section>
