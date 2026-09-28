@@ -74,7 +74,7 @@
     "href": "blog/index.html",
     "title": "Blog",
     "section": "",
-    "text": "What Skills Show Up Most in Data, AI, and ML Jobs?\n\n\n\n\n\n\n\n\nSep 20, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Does a p-Value Really Mean?\n\n\n\n\n\n\n\n\nSep 14, 2026\n\n\n\n\n\nNo matching items"
+    "text": "How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?\n\n\n\n\n\n\n\n\nSep 28, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Skills Show Up Most in Data, AI, and ML Jobs?\n\n\n\n\n\n\n\n\nSep 20, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Does a p-Value Really Mean?\n\n\n\n\n\n\n\n\nSep 14, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -166,5 +166,54 @@
     "title": "Eric Lu",
     "section": "",
     "text": "Eric Lu\nUniversity of Pennsylvaina\nWelcome to my personal website.\n\nQuick Links"
+  },
+  {
+    "objectID": "blog/posts/post3/Index.html",
+    "href": "blog/posts/post3/Index.html",
+    "title": "How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?",
+    "section": "",
+    "text": "COVID-19 caused a sudden disruption in the U.S. labor market, but the effect was not evenly distributed across workers. One difference that stands out is education.\nIn this post, I use IPUMS Current Population Survey (CPS) data to look at how unemployment changed across education groups before, during, and after the COVID-19 shock. I also compare age groups to see whether the education gap was concentrated among younger workers or appeared more broadly.\nI focus on adults ages 25 to 64 and divide education into four groups: less than high school, high school, some college or an associate’s degree, and a bachelor’s degree or higher."
+  },
+  {
+    "objectID": "blog/posts/post3/Index.html#introduction",
+    "href": "blog/posts/post3/Index.html#introduction",
+    "title": "How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?",
+    "section": "",
+    "text": "COVID-19 caused a sudden disruption in the U.S. labor market, but the effect was not evenly distributed across workers. One difference that stands out is education.\nIn this post, I use IPUMS Current Population Survey (CPS) data to look at how unemployment changed across education groups before, during, and after the COVID-19 shock. I also compare age groups to see whether the education gap was concentrated among younger workers or appeared more broadly.\nI focus on adults ages 25 to 64 and divide education into four groups: less than high school, high school, some college or an associate’s degree, and a bachelor’s degree or higher."
+  },
+  {
+    "objectID": "blog/posts/post3/Index.html#data",
+    "href": "blog/posts/post3/Index.html#data",
+    "title": "How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?",
+    "section": "Data",
+    "text": "Data\nThe data come from the monthly IPUMS CPS from 2015 through 2024. I use age, education, employment status, year, month, and the CPS final person weight (WTFINL).\nI restrict the sample to ages 25–64 because most people in this age range have already completed their education but are still of working age.\nAll unemployment rates are weighted using the CPS sampling weights. I calculate the unemployment rate as the weighted number of unemployed workers divided by the weighted labor force:\n\\[\n\\text{Unemployment Rate}\n=\n\\frac{\\text{Weighted Unemployed}}\n{\\text{Weighted Employed} + \\text{Weighted Unemployed}}\n\\]\nPeople who are not in the labor force are not included in this calculation."
+  },
+  {
+    "objectID": "blog/posts/post3/Index.html#unemployment-before-and-after-covid",
+    "href": "blog/posts/post3/Index.html#unemployment-before-and-after-covid",
+    "title": "How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?",
+    "section": "Unemployment Before and After COVID",
+    "text": "Unemployment Before and After COVID\nThe first figure shows annual unemployment rates by education from 2015 to 2024.\n\nBefore COVID-19, unemployment was falling for all four education groups. However, there was already a clear gap by education. Workers with less than a high school education consistently had the highest unemployment rate, while workers with a bachelor’s degree or higher had the lowest.\nThat pattern became much more noticeable in 2020. Unemployment increased sharply for every group, but the increase was much larger among workers with less education.\nAfter 2020, unemployment fell quickly again. By 2022 and 2023, the rates were much closer to their pre-pandemic levels, although the ordering across education groups remained similar."
+  },
+  {
+    "objectID": "blog/posts/post3/Index.html#what-happened-in-2020",
+    "href": "blog/posts/post3/Index.html#what-happened-in-2020",
+    "title": "How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?",
+    "section": "What Happened in 2020?",
+    "text": "What Happened in 2020?\nAnnual averages hide how sudden the change was, so the second figure looks at monthly unemployment rates from 2019 through 2021.\n\nThe shock appears very clearly in the spring of 2020.\nIn April 2020, the unemployment rate was about 20.8% for workers with less than a high school education and 17.0% for high school graduates. The rate was around 14.6% for workers with some college or an associate’s degree.\nFor workers with a bachelor’s degree or higher, it was much lower at about 7.9%.\nThis is probably the clearest result in the data. The pandemic increased unemployment across the entire labor market, but workers with lower levels of education experienced a much larger increase. The gap also did not disappear immediately once unemployment started falling."
+  },
+  {
+    "objectID": "blog/posts/post3/Index.html#does-age-change-the-pattern",
+    "href": "blog/posts/post3/Index.html#does-age-change-the-pattern",
+    "title": "How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?",
+    "section": "Does Age Change the Pattern?",
+    "text": "Does Age Change the Pattern?\nThe last figure compares the change in unemployment between April 2019 and April 2020 for different age and education groups.\n\nI use April in both years so that the comparison is not driven by normal seasonal differences between months.\nThere is some variation across age groups, but the education pattern is much more consistent. Workers with a bachelor’s degree or higher experienced a smaller increase in unemployment in every age group.\nWorkers with only a high school education, some college, or less than a high school education generally experienced much larger increases. The size of the shock changes somewhat with age, but the education gap is not limited to young workers.\nThis suggests that the relationship between education and the COVID unemployment shock was present across much of the working-age population."
+  },
+  {
+    "objectID": "blog/posts/post3/Index.html#conclusion",
+    "href": "blog/posts/post3/Index.html#conclusion",
+    "title": "How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe CPS data show that the COVID-19 unemployment shock was very unequal across education groups.\nWorkers with less education had higher unemployment even before the pandemic, but the differences became much larger during the spring of 2020. In April 2020, unemployment exceeded 20% among workers without a high school diploma, compared with less than 8% among workers with a bachelor’s degree or higher.\nThe age comparison shows that this was not just a pattern among younger workers. Across age groups, workers with more education generally experienced a smaller increase in unemployment.\nThese results are descriptive, so they do not mean that education itself caused the difference. Education is related to many other characteristics, including occupation, industry, and the ability to work remotely. Still, the CPS data make one point clear: the employment effects of the COVID-19 shock were far from evenly distributed.\nSource: IPUMS Current Population Survey (CPS). Population estimates use CPS sampling weights."
   }
 ]

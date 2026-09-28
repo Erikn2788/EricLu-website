@@ -6,3 +6,5 @@
 /.quarto/
 
 **/*.quarto_ipynb
+data/raw/*.dat.gz
+data/raw/*.xml

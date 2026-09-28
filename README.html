@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Blog – Eric Lu</title>
+<title>readme – Eric Lu</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,28 +26,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-92404dd89b1444827012a9e3a58cda88.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-92404dd89b1444827012a9e3a58cda88.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,211 +108,227 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Eric Lu</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../bio.html"> 
-<span class="menu-text">About Me</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../resume.html"> 
-<span class="menu-text">Resume</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../blog/index.html" aria-current="page"> 
-<span class="menu-text">Blog</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Blog</h1>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
 
+<section id="computational-methods-for-economists" class="level1">
+<h1>Computational Methods for Economists</h1>
+<p>This repository contains my course website, blog posts, code, data-processing files, and visualizations for <strong>Computational Methods for Economists</strong>.</p>
+<p>The published website is built with Quarto and hosted through GitHub Pages.</p>
+<section id="blog-posts" class="level2">
+<h2 class="anchored" data-anchor-id="blog-posts">Blog Posts</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Post</th>
+<th>Topic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Blog Post 2</td>
+<td><strong>What Skills Show Up Most in Data, AI, and ML Jobs?</strong></td>
+</tr>
+<tr class="even">
+<td>Blog Post 3</td>
+<td><strong>How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Additional blog posts will be added to this repository throughout the course.</p>
+</section>
+<section id="repository-structure" class="level2">
+<h2 class="anchored" data-anchor-id="repository-structure">Repository Structure</h2>
+<p>The repository uses the following general structure:</p>
+<pre class="text"><code>.
+├── blog/
+│   └── posts/
+│       ├── post2/
+│       ├── post3/
+│       └── ...
+│
+├── R/
+│   └── analysis and data-processing scripts
+│
+├── data/
+│   ├── raw/
+│   │   └── original source data when redistribution is permitted
+│   └── derived/
+│       └── cleaned or summarized data created by the analysis
+│
+├── images/
+│   └── figures used in blog posts
+│
+├── docs/
+│   └── rendered website files for GitHub Pages
+│
+├── README.md
+└── _quarto.yml</code></pre>
+<p>Files are given descriptive names so that the code, derived data, and figures associated with each blog post can be identified as additional posts are added.</p>
+</section>
+<section id="general-replication-instructions" class="level2">
+<h2 class="anchored" data-anchor-id="general-replication-instructions">General Replication Instructions</h2>
+<p>Each blog post is designed so that the main analysis can be reproduced from the code included in this repository.</p>
+<p>In general:</p>
+<ol type="1">
+<li>Clone or download this repository.</li>
+<li>Open the RStudio project from the repository root.</li>
+<li>Obtain any external raw data that cannot legally or practically be included in the repository.</li>
+<li>Place those files in the location described for the relevant blog post.</li>
+<li>Install any R packages required by the corresponding analysis script.</li>
+<li>Run the relevant script in the <code>R/</code> folder.</li>
+<li>Derived data and figures will be generated programmatically and saved in the repository folders used by the website.</li>
+</ol>
+<p>Raw data are not manually modified. Data cleaning, aggregation, and figure creation are handled in code whenever possible.</p>
+<hr>
+</section>
+<section id="blog-post-2" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post-2">Blog Post 2</h2>
+<section id="what-skills-show-up-most-in-data-ai-and-ml-jobs" class="level3">
+<h3 class="anchored" data-anchor-id="what-skills-show-up-most-in-data-ai-and-ml-jobs">What Skills Show Up Most in Data, AI, and ML Jobs?</h3>
+<p>Blog Post 2 analyzes job postings from the September 2026 Hacker News <strong>“Who is hiring?”</strong> thread to examine which technical skills appear most often in data, AI, and machine-learning jobs.</p>
+<p>The analysis uses <code>rvest</code> to collect the job-posting text, cleans the postings, identifies data-related positions, and summarizes commonly requested skills.</p>
+</section>
+<section id="data" class="level3">
+<h3 class="anchored" data-anchor-id="data">Data</h3>
+<p>The source data come from the Hacker News “Who is hiring?” thread.</p>
+<p>The analysis workflow includes:</p>
+<ul>
+<li>collecting the job postings with <code>rvest</code>,</li>
+<li>saving the source content,</li>
+<li>cleaning and filtering the postings,</li>
+<li>identifying data, AI, and machine-learning jobs,</li>
+<li>counting selected technical skills,</li>
+<li>and generating the visualization used in the blog post.</li>
+</ul>
+</section>
+<section id="replication" class="level3">
+<h3 class="anchored" data-anchor-id="replication">Replication</h3>
+<p>The R code for Blog Post 2 is stored in the <code>R/</code> folder.</p>
+<p>Run the corresponding Blog Post 2 analysis script from the project root. The script reproduces the cleaned data and visualization used in the published post.</p>
+<p>The Quarto source for the post is located in:</p>
+<pre class="text"><code>blog/posts/post2/</code></pre>
+<hr>
+</section>
+</section>
+<section id="blog-post-3" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post-3">Blog Post 3</h2>
+<section id="how-unequal-was-the-covid-19-unemployment-shock-across-education-groups" class="level3">
+<h3 class="anchored" data-anchor-id="how-unequal-was-the-covid-19-unemployment-shock-across-education-groups">How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?</h3>
+<p>Blog Post 3 uses <strong>IPUMS Current Population Survey (CPS)</strong> microdata to examine how unemployment differed across education groups before, during, and after the COVID-19 labor-market shock.</p>
+<p>The analysis focuses on U.S. adults ages 25–64 and uses CPS sampling weights when calculating population unemployment rates.</p>
+</section>
+<section id="data-1" class="level3">
+<h3 class="anchored" data-anchor-id="data-1">Data</h3>
+<p>The analysis uses IPUMS CPS Basic Monthly Samples from <strong>2015 through 2024</strong>.</p>
+<p>The main variables used are:</p>
+<ul>
+<li><code>YEAR</code></li>
+<li><code>MONTH</code></li>
+<li><code>AGE</code></li>
+<li><code>EDUC</code></li>
+<li><code>EMPSTAT</code></li>
+<li><code>LABFORCE</code></li>
+<li><code>WTFINL</code></li>
+</ul>
+<p>Education is grouped into four categories:</p>
+<ul>
+<li>Less than high school</li>
+<li>High school</li>
+<li>Some college / Associate</li>
+<li>Bachelor’s degree or higher</li>
+</ul>
+<p>Population unemployment rates are calculated using the CPS final person weight, <code>WTFINL</code>.</p>
+</section>
+<section id="raw-cps-data" class="level3">
+<h3 class="anchored" data-anchor-id="raw-cps-data">Raw CPS Data</h3>
+<p>Raw IPUMS CPS microdata are <strong>not included in this public repository</strong>.</p>
+<p>To reproduce Blog Post 3, obtain the corresponding IPUMS CPS extract and place the downloaded <code>.xml</code> and <code>.dat.gz</code> files in:</p>
+<pre class="text"><code>data/raw/</code></pre>
+<p>The extract should contain the 2015–2024 Basic Monthly CPS samples and the variables listed above.</p>
+</section>
+<section id="replication-1" class="level3">
+<h3 class="anchored" data-anchor-id="replication-1">Replication</h3>
+<p>The analysis script is:</p>
+<pre class="text"><code>R/blog_post3_analysis.R</code></pre>
+<p>From the project root, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/blog_post3_analysis.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The script:</p>
+<ul>
+<li>reads the IPUMS CPS extract,</li>
+<li>restricts the sample to adults ages 25–64,</li>
+<li>constructs the four education groups,</li>
+<li>identifies employed and unemployed members of the labor force,</li>
+<li>calculates CPS-weighted monthly and annual unemployment rates,</li>
+<li>creates the age-group comparison,</li>
+<li>and generates all three figures used in Blog Post 3.</li>
+</ul>
+<p>The analysis produces the derived monthly data:</p>
+<pre class="text"><code>data/derived/unemployment_monthly.csv</code></pre>
+<p>and the following figures:</p>
+<pre class="text"><code>images/figure1_unemployment_education_2015_2024.png
+images/figure2_covid_monthly_unemployment.png
+images/figure3_age_education_unemployment.png</code></pre>
+<p>The Quarto source for the post is located in:</p>
+<pre class="text"><code>blog/posts/post3/</code></pre>
+<hr>
+</section>
+</section>
+<section id="adding-future-blog-posts" class="level2">
+<h2 class="anchored" data-anchor-id="adding-future-blog-posts">Adding Future Blog Posts</h2>
+<p>Future blog posts will follow the same general organization.</p>
+<p>For each new post:</p>
+<ul>
+<li>the Quarto source will be placed under <code>blog/posts/</code>,</li>
+<li>analysis code will be stored in <code>R/</code>,</li>
+<li>original data will be stored in <code>data/raw/</code> when redistribution is permitted,</li>
+<li>cleaned or summarized data will be stored in <code>data/derived/</code>,</li>
+<li>and figures used on the website will be saved programmatically.</li>
+</ul>
+<p>New posts can be added without changing the overall repository structure. Their titles and topics can simply be added to the <strong>Blog Posts</strong> table above, along with a short replication section when necessary.</p>
+</section>
+<section id="reproducibility" class="level2">
+<h2 class="anchored" data-anchor-id="reproducibility">Reproducibility</h2>
+<p>The goal of this repository is to keep the published results connected to the code that generated them.</p>
+<p>Whenever possible:</p>
+<ul>
+<li>data are obtained or processed programmatically,</li>
+<li>transformations are documented in R scripts,</li>
+<li>population statistics use the appropriate weights when required,</li>
+<li>figures are generated directly from the analysis,</li>
+<li>and derived outputs are saved rather than manually copied into the website.</li>
+</ul>
+<p>Some external datasets may not be stored in the repository because of licensing, redistribution restrictions, or file-size limits. In those cases, the README documents how the data should be obtained and where they should be placed for replication.</p>
+</section>
+<section id="website" class="level2">
+<h2 class="anchored" data-anchor-id="website">Website</h2>
+<p>The rendered website is stored in the <code>docs/</code> directory and published through GitHub Pages.</p>
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="TGFib3IlMjBFY29ub21pY3MlMkNDUFMlMkNEYXRhJTIwVmlzdWFsaXphdGlvbg==" data-listing-date-sort="1790568000000" data-listing-file-modified-sort="1790628467054" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="715">
-<div class="thumbnail"><a href="../blog/posts/post3/Index.html" class="no-external">
+</section>
+</section>
 
-<p class="card-img-top"><img loading='lazy' src="..\images\figure1_unemployment_education_2015_2024.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/post3/Index.html" class="no-external">How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?</a>
-</h3>
-<div class="delink listing-description"><a href="../blog/posts/post3/Index.html" class="no-external">
-COVID-19 caused a sudden disruption in the U.S. labor market, but the effect was not evenly distributed across workers. One difference that stands out is education.
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/post3/Index.html" class="no-external">
-<div class="listing-date">
-Sep 28, 2026
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="ZGF0YS1zY2llbmNlJTJDd2ViLXNjcmFwaW5nJTJDam9icyUyQ3I=" data-listing-date-sort="1789876800000" data-listing-file-modified-sort="1789960980295" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1022">
-<div class="thumbnail"><a href="../blog/posts/post2/index.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="..\results\hn_data_job_skills.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/post2/index.html" class="no-external">What Skills Show Up Most in Data, AI, and ML Jobs?</a>
-</h3>
-<div class="delink listing-description"><a href="../blog/posts/post2/index.html" class="no-external">
-There are a lot of things someone interested in data or AI could spend time learning. Python and SQL are obvious examples, but there are also cloud platforms, databases…
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/post2/index.html" class="no-external">
-<div class="listing-date">
-Sep 20, 2026
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="c3RhdGlzdGljcyUyQ2Vjb25vbWV0cmljcyUyQ2RhdGEtc2NpZW5jZQ==" data-listing-date-sort="1789358400000" data-listing-file-modified-sort="1789422941988" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="599">
-<div class="thumbnail"><a href="../blog/posts/post1/Untitled.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="posts\post1\figure1.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/post1/Untitled.html" class="no-external">What Does a p-Value Really Mean?</a>
-</h3>
-<div class="delink listing-description"><a href="../blog/posts/post1/Untitled.html" class="no-external">
-One of the most common misunderstandings in statistics is the meaning of a p-value. Suppose a researcher runs a hypothesis test and obtains a p-value of 0.03. It is tempting…
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/post1/Untitled.html" class="no-external">
-<div class="listing-date">
-Sep 14, 2026
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -681,19 +730,6 @@ Sep 14, 2026
   });
   </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
-    <div class="nav-footer-left">
-<p><img src="../images/UniversityofPennsylvania_FullLogo_RGB.png" class="img-fluid" width="100"></p>
-</div>   
-    <div class="nav-footer-center">
-<p>© 2026 Eric Lu</p>
-</div>
-    <div class="nav-footer-right">
-      &nbsp;
-    </div>
-  </div>
-</footer>
 
 
 
