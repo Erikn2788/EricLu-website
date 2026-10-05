@@ -14,6 +14,62 @@
     "text": "Resume PDF"
   },
   {
+    "objectID": "blog/posts/post4/index.html",
+    "href": "blog/posts/post4/index.html",
+    "title": "How Much Has the Federal Minimum Wage Lost in Purchasing Power?",
+    "section": "",
+    "text": "The federal minimum wage is still $7.25 per hour, the same rate set in July 2009. I knew it had not changed for a long time, but I wanted to see how different that number looks once inflation is taken into account.\nI use monthly FRED data to look at the minimum wage in three ways. First, I plot the nominal federal minimum wage since 1938. Then I adjust it for inflation. Finally, I ask a simpler counterfactual question: if the $7.25 rate from July 2009 had only kept pace with CPI, where would it be now?"
+  },
+  {
+    "objectID": "blog/posts/post4/index.html#introduction",
+    "href": "blog/posts/post4/index.html#introduction",
+    "title": "How Much Has the Federal Minimum Wage Lost in Purchasing Power?",
+    "section": "",
+    "text": "The federal minimum wage is still $7.25 per hour, the same rate set in July 2009. I knew it had not changed for a long time, but I wanted to see how different that number looks once inflation is taken into account.\nI use monthly FRED data to look at the minimum wage in three ways. First, I plot the nominal federal minimum wage since 1938. Then I adjust it for inflation. Finally, I ask a simpler counterfactual question: if the $7.25 rate from July 2009 had only kept pace with CPI, where would it be now?"
+  },
+  {
+    "objectID": "blog/posts/post4/index.html#data",
+    "href": "blog/posts/post4/index.html#data",
+    "title": "How Much Has the Federal Minimum Wage Lost in Purchasing Power?",
+    "section": "Data",
+    "text": "Data\nI downloaded two monthly series directly from FRED using the fredr package: the federal minimum wage (FEDMINNFRWG) and the Consumer Price Index for All Urban Consumers (CPIAUCNS).\nI originally planned to express the real minimum wage in 2025 dollars. While checking the data, I found that the October 2025 CPI observation was missing in the FRED data I downloaded. Rather than use an incomplete year as the base, I switched to 2024, which has all twelve monthly observations.\nThe real minimum wage is calculated as:\n\\[\n\\text{Real Minimum Wage}_t\n=\n\\text{Nominal Minimum Wage}_t\n\\times\n\\frac{\\text{Average CPI in 2024}}{\\text{CPI}_t}\n\\]\nThis puts wages from different years into the same purchasing-power units."
+  },
+  {
+    "objectID": "blog/posts/post4/index.html#how-has-the-nominal-minimum-wage-changed",
+    "href": "blog/posts/post4/index.html#how-has-the-nominal-minimum-wage-changed",
+    "title": "How Much Has the Federal Minimum Wage Lost in Purchasing Power?",
+    "section": "How Has the Nominal Minimum Wage Changed?",
+    "text": "How Has the Nominal Minimum Wage Changed?\nThe first figure shows the federal minimum wage in current dollars.\n\n\n\n\n\nFederal minimum wage in current dollars, 1938–2026.\n\n\n\n\nThe step pattern is what I would expect from a policy variable. The wage stays fixed for long periods and then jumps when a new federal rate takes effect.\nOne detail I noticed from the monthly data is that the minimum wage was still $6.55 in June 2009 and increased to $7.25 in July. It has remained at $7.25 ever since.\nThat $7.25 line looks flat after 2009, which is exactly why I wanted to adjust it for inflation."
+  },
+  {
+    "objectID": "blog/posts/post4/index.html#what-changes-after-adjusting-for-inflation",
+    "href": "blog/posts/post4/index.html#what-changes-after-adjusting-for-inflation",
+    "title": "How Much Has the Federal Minimum Wage Lost in Purchasing Power?",
+    "section": "What Changes After Adjusting for Inflation?",
+    "text": "What Changes After Adjusting for Inflation?\nThe second figure shows the same minimum wage after converting it to 2024 dollars.\n\n\n\n\n\nFederal minimum wage adjusted to 2024 dollars.\n\n\n\n\nThe highest real value in the series occurs in February 1968, when the $1.60 federal minimum wage was worth about $14.68 in 2024 dollars.\nAfter that, the real series repeatedly rises when the nominal minimum wage is increased and then falls as prices continue to increase. By August 2026, $7.25 had a real value of only about $6.79 in 2024 dollars.\nWhat surprised me more was that the peak came all the way back in 1968. The nominal wage has gone up since then, but that does not mean workers at the federal minimum wage can buy more with it."
+  },
+  {
+    "objectID": "blog/posts/post4/index.html#what-if-7.25-had-kept-up-with-inflation",
+    "href": "blog/posts/post4/index.html#what-if-7.25-had-kept-up-with-inflation",
+    "title": "How Much Has the Federal Minimum Wage Lost in Purchasing Power?",
+    "section": "What If $7.25 Had Kept Up with Inflation?",
+    "text": "What If $7.25 Had Kept Up with Inflation?\nI then used July 2009 as a starting point and asked what the federal minimum wage would look like if it had increased at the same rate as CPI.\n\\[\n\\text{Inflation-Adjusted Wage}_t\n=\n7.25\n\\times\n\\frac{\\text{CPI}_t}{\\text{CPI}_{July\\ 2009}}\n\\]\n\n\n\n\n\nActual federal minimum wage compared with a CPI-adjusted version of the July 2009 wage.\n\n\n\n\nBoth lines begin at $7.25 in July 2009. After that, the actual federal minimum wage stays flat while the CPI-adjusted line keeps rising.\nBy August 2026, maintaining the purchasing power of the July 2009 wage would require about $11.28 per hour. The actual federal minimum wage was still $7.25.\nI use $11.30 only as a purchasing-power comparison, not as an estimate of what the minimum wage should be."
+  },
+  {
+    "objectID": "blog/posts/post4/index.html#takeaway",
+    "href": "blog/posts/post4/index.html#takeaway",
+    "title": "How Much Has the Federal Minimum Wage Lost in Purchasing Power?",
+    "section": "Takeaway",
+    "text": "Takeaway\nI already knew the federal minimum wage had been stuck at $7.25 since 2009. What I didn’t expect was how much its purchasing power had fallen. In 2024 dollars it’s now worth less than half of what it was in 1968.\nOne caveat is that I only looked at the federal rate, and plenty of states set a higher one, so this isn’t what every minimum-wage worker actually faces. Next time I’d want to bring state minimums in."
+  },
+  {
+    "objectID": "blog/posts/post4/index.html#source",
+    "href": "blog/posts/post4/index.html#source",
+    "title": "How Much Has the Federal Minimum Wage Lost in Purchasing Power?",
+    "section": "Source",
+    "text": "Source\nFederal Reserve Bank of St. Louis, FRED.\nThe data were downloaded directly in R using the fredr package.\nSeries used:\n\nFederal Minimum Hourly Wage (FEDMINNFRWG)\nConsumer Price Index for All Urban Consumers (CPIAUCNS)"
+  },
+  {
     "objectID": "blog/posts/post2/index.html",
     "href": "blog/posts/post2/index.html",
     "title": "What Skills Show Up Most in Data, AI, and ML Jobs?",
@@ -74,7 +130,7 @@
     "href": "blog/index.html",
     "title": "Blog",
     "section": "",
-    "text": "How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?\n\n\n\n\n\n\n\n\nSep 28, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Skills Show Up Most in Data, AI, and ML Jobs?\n\n\n\n\n\n\n\n\nSep 20, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Does a p-Value Really Mean?\n\n\n\n\n\n\n\n\nSep 14, 2026\n\n\n\n\n\nNo matching items"
+    "text": "How Much Has the Federal Minimum Wage Lost in Purchasing Power?\n\n\n\n\n\n\n\n\nOct 5, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nHow Unequal Was the COVID-19 Unemployment Shock Across Education Groups?\n\n\n\n\n\n\n\n\nSep 28, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Skills Show Up Most in Data, AI, and ML Jobs?\n\n\n\n\n\n\n\n\nSep 20, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Does a p-Value Really Mean?\n\n\n\n\n\n\n\n\nSep 14, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -161,13 +217,6 @@
     "text": "The Main Takeaway\nThe easiest way to remember the meaning of a p-value is:\n\nA p-value measures how surprising the data are under the null hypothesis.\n\nIt does not measure the probability that the null hypothesis itself is true.\nA p-value is therefore one piece of evidence about how well the data fit a hypothesis, not a direct probability that the hypothesis is right or wrong."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Eric Lu",
-    "section": "",
-    "text": "Eric Lu\nUniversity of Pennsylvaina\nWelcome to my personal website.\n\nQuick Links"
-  },
-  {
     "objectID": "blog/posts/post3/Index.html",
     "href": "blog/posts/post3/Index.html",
     "title": "How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?",
@@ -215,5 +264,12 @@
     "title": "How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?",
     "section": "Conclusion",
     "text": "Conclusion\nThe CPS data show that the COVID-19 unemployment shock was very unequal across education groups.\nWorkers with less education had higher unemployment even before the pandemic, but the differences became much larger during the spring of 2020. In April 2020, unemployment exceeded 20% among workers without a high school diploma, compared with less than 8% among workers with a bachelor’s degree or higher.\nThe age comparison shows that this was not just a pattern among younger workers. Across age groups, workers with more education generally experienced a smaller increase in unemployment.\nThese results are descriptive, so they do not mean that education itself caused the difference. Education is related to many other characteristics, including occupation, industry, and the ability to work remotely. Still, the CPS data make one point clear: the employment effects of the COVID-19 shock were far from evenly distributed.\nSource: IPUMS Current Population Survey (CPS). Population estimates use CPS sampling weights."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Eric Lu",
+    "section": "",
+    "text": "Eric Lu\nUniversity of Pennsylvaina\nWelcome to my personal website.\n\nQuick Links"
   }
 ]

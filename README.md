@@ -2,40 +2,51 @@
 
 This repository contains my course website, blog posts, code, data-processing files, and visualizations for **Computational Methods for Economists**.
 
-The published website is built with Quarto and hosted through GitHub Pages.
+The website is built with Quarto and published through GitHub Pages.
 
 ## Blog Posts
 
 | Post | Topic |
 |---|---|
+| Blog Post 1 | **What Does a p-Value Really Mean?** |
 | Blog Post 2 | **What Skills Show Up Most in Data, AI, and ML Jobs?** |
 | Blog Post 3 | **How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?** |
-
-Additional blog posts will be added to this repository throughout the course.
+| Blog Post 4 | **How Much Has the Federal Minimum Wage Lost in Purchasing Power?** |
+| Blog Post 5 | *To be added* |
+| Blog Post 6 | *To be added* |
+| Blog Post 7 | *To be added* |
+| Blog Post 8 | *To be added* |
+| Blog Post 9 | *To be added* |
+| Blog Post 10 | *To be added* |
+| Blog Post 11 | *To be added* |
 
 ## Repository Structure
-
-The repository uses the following general structure:
 
 ```text
 .
 ├── blog/
 │   └── posts/
+│       ├── post1/
 │       ├── post2/
 │       ├── post3/
-│       └── ...
+│       ├── post4/
+│       ├── ...
+│       └── post11/
 │
 ├── R/
 │   └── analysis and data-processing scripts
 │
 ├── data/
 │   ├── raw/
-│   │   └── original source data when redistribution is permitted
+│   │   └── original source data
 │   └── derived/
-│       └── cleaned or summarized data created by the analysis
+│       └── cleaned or summarized data
 │
 ├── images/
 │   └── figures used in blog posts
+│
+├── results/
+│   └── additional analysis outputs
 │
 ├── docs/
 │   └── rendered website files for GitHub Pages
@@ -44,23 +55,35 @@ The repository uses the following general structure:
 └── _quarto.yml
 ```
 
-Files are given descriptive names so that the code, derived data, and figures associated with each blog post can be identified as additional posts are added.
+The goal is to keep the code, data, and figures for each blog post organized and reproducible.
 
 ## General Replication Instructions
 
-Each blog post is designed so that the main analysis can be reproduced from the code included in this repository.
-
-In general:
+In general, each blog post can be reproduced by:
 
 1. Clone or download this repository.
 2. Open the RStudio project from the repository root.
-3. Obtain any external raw data that cannot legally or practically be included in the repository.
-4. Place those files in the location described for the relevant blog post.
-5. Install any R packages required by the corresponding analysis script.
-6. Run the relevant script in the `R/` folder.
-7. Derived data and figures will be generated programmatically and saved in the repository folders used by the website.
+3. Install the R packages required by the relevant analysis script.
+4. Obtain any external data that cannot be included directly in the repository.
+5. Place raw data in `data/raw/` when required.
+6. Run the corresponding script in the `R/` folder.
+7. Render the Quarto website.
 
-Raw data are not manually modified. Data cleaning, aggregation, and figure creation are handled in code whenever possible.
+Derived datasets and figures are generated programmatically whenever possible.
+
+---
+
+## Blog Post 1
+
+### What Does a p-Value Really Mean?
+
+This post explains the interpretation of a p-value and some common misunderstandings surrounding statistical significance.
+
+### Quarto Source
+
+```text
+blog/posts/post1/
+```
 
 ---
 
@@ -70,28 +93,41 @@ Raw data are not manually modified. Data cleaning, aggregation, and figure creat
 
 Blog Post 2 analyzes job postings from the September 2026 Hacker News **"Who is hiring?"** thread to examine which technical skills appear most often in data, AI, and machine-learning jobs.
 
-The analysis uses `rvest` to collect the job-posting text, cleans the postings, identifies data-related positions, and summarizes commonly requested skills.
+The analysis uses `rvest` to collect job-posting text, identifies Data, AI, and ML-related positions, and counts commonly mentioned technical skills.
 
 ### Data
 
-The source data come from the Hacker News "Who is hiring?" thread.
+The source data come from the September 2026 Hacker News **"Who is hiring?"** thread.
 
-The analysis workflow includes:
+Raw webpage content is saved in:
 
-- collecting the job postings with `rvest`,
-- saving the source content,
-- cleaning and filtering the postings,
-- identifying data, AI, and machine-learning jobs,
-- counting selected technical skills,
-- and generating the visualization used in the blog post.
+```text
+data/raw/
+```
+
+Cleaned job-posting data are stored in:
+
+```text
+data/derived/
+```
 
 ### Replication
 
-The R code for Blog Post 2 is stored in the `R/` folder.
+The main analysis script is:
 
-Run the corresponding Blog Post 2 analysis script from the project root. The script reproduces the cleaned data and visualization used in the published post.
+```text
+R/scrape_hn_jobs.R
+```
 
-The Quarto source for the post is located in:
+From the project root, run:
+
+```r
+source("R/scrape_hn_jobs.R")
+```
+
+The script downloads the webpage, saves the raw HTML, filters relevant hiring posts, calculates skill frequencies, and generates the visualization used in the blog post.
+
+### Quarto Source
 
 ```text
 blog/posts/post2/
@@ -103,44 +139,33 @@ blog/posts/post2/
 
 ### How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?
 
-Blog Post 3 uses **IPUMS Current Population Survey (CPS)** microdata to examine how unemployment differed across education groups before, during, and after the COVID-19 labor-market shock.
+Blog Post 3 uses **IPUMS Current Population Survey (CPS)** microdata to examine how unemployment changed across education groups before, during, and after the COVID-19 shock.
 
-The analysis focuses on U.S. adults ages 25–64 and uses CPS sampling weights when calculating population unemployment rates.
+The analysis focuses on U.S. adults ages 25–64 and uses CPS sampling weights when calculating unemployment rates.
 
 ### Data
 
 The analysis uses IPUMS CPS Basic Monthly Samples from **2015 through 2024**.
 
-The main variables used are:
+The main variables are:
 
-- `YEAR`
-- `MONTH`
-- `AGE`
-- `EDUC`
-- `EMPSTAT`
-- `LABFORCE`
-- `WTFINL`
+```text
+YEAR
+MONTH
+AGE
+EDUC
+EMPSTAT
+LABFORCE
+WTFINL
+```
 
-Education is grouped into four categories:
+Raw IPUMS CPS microdata are not included in this public repository.
 
-- Less than high school
-- High school
-- Some college / Associate
-- Bachelor's degree or higher
-
-Population unemployment rates are calculated using the CPS final person weight, `WTFINL`.
-
-### Raw CPS Data
-
-Raw IPUMS CPS microdata are **not included in this public repository**.
-
-To reproduce Blog Post 3, obtain the corresponding IPUMS CPS extract and place the downloaded `.xml` and `.dat.gz` files in:
+To reproduce the analysis, place the corresponding IPUMS `.xml` and `.dat.gz` files in:
 
 ```text
 data/raw/
 ```
-
-The extract should contain the 2015–2024 Basic Monthly CPS samples and the variables listed above.
 
 ### Replication
 
@@ -150,29 +175,21 @@ The analysis script is:
 R/blog_post3_analysis.R
 ```
 
-From the project root, run:
+Run:
 
 ```r
 source("R/blog_post3_analysis.R")
 ```
 
-The script:
+The script creates the education groups, calculates weighted unemployment rates, produces the derived monthly data, and generates all three figures used in the post.
 
-- reads the IPUMS CPS extract,
-- restricts the sample to adults ages 25–64,
-- constructs the four education groups,
-- identifies employed and unemployed members of the labor force,
-- calculates CPS-weighted monthly and annual unemployment rates,
-- creates the age-group comparison,
-- and generates all three figures used in Blog Post 3.
-
-The analysis produces the derived monthly data:
+Derived data:
 
 ```text
 data/derived/unemployment_monthly.csv
 ```
 
-and the following figures:
+Figures:
 
 ```text
 images/figure1_unemployment_education_2015_2024.png
@@ -180,7 +197,7 @@ images/figure2_covid_monthly_unemployment.png
 images/figure3_age_education_unemployment.png
 ```
 
-The Quarto source for the post is located in:
+### Quarto Source
 
 ```text
 blog/posts/post3/
@@ -188,34 +205,279 @@ blog/posts/post3/
 
 ---
 
-## Adding Future Blog Posts
+## Blog Post 4
 
-Future blog posts will follow the same general organization.
+### How Much Has the Federal Minimum Wage Lost in Purchasing Power?
 
-For each new post:
+Blog Post 4 uses FRED data to examine how the purchasing power of the U.S. federal minimum wage has changed over time.
 
-- the Quarto source will be placed under `blog/posts/`,
-- analysis code will be stored in `R/`,
-- original data will be stored in `data/raw/` when redistribution is permitted,
-- cleaned or summarized data will be stored in `data/derived/`,
-- and figures used on the website will be saved programmatically.
+The analysis compares the nominal federal minimum wage with an inflation-adjusted version expressed in 2024 dollars. It also calculates what the July 2009 minimum wage of $7.25 would be if it had continued to increase with CPI.
 
-New posts can be added without changing the overall repository structure. Their titles and topics can simply be added to the **Blog Posts** table above, along with a short replication section when necessary.
+### Data
+
+The analysis uses two monthly FRED series:
+
+```text
+FEDMINNFRWG
+CPIAUCNS
+```
+
+The data are downloaded directly in R using the `fredr` package and the FRED API.
+
+Raw data are saved as:
+
+```text
+data/raw/fred_federal_minimum_wage.csv
+data/raw/fred_cpi.csv
+```
+
+The derived dataset is:
+
+```text
+data/derived/blog4_minimum_wage.csv
+```
+
+### Replication
+
+The analysis script is:
+
+```text
+R/blog_post4_analysis.R
+```
+
+A FRED API key is required. It should be stored in the user's `.Renviron` file:
+
+```text
+FRED_API_KEY=YOUR_API_KEY
+```
+
+Then run:
+
+```r
+source("R/blog_post4_analysis.R")
+```
+
+The script downloads the FRED data, adjusts the minimum wage for inflation, calculates the July 2009 CPI counterfactual, and generates the three figures used in the post.
+
+Figures:
+
+```text
+images/figure1_federal_minimum_wage.png
+images/figure2_real_minimum_wage.png
+images/figure3_minimum_wage_vs_inflation_path.png
+```
+
+### Quarto Source
+
+```text
+blog/posts/post4/
+```
+
+---
+
+## Blog Post 5
+
+### Topic
+
+*To be added.*
+
+### Data
+
+*To be added.*
+
+### Replication
+
+Analysis script:
+
+```text
+R/blog_post5_analysis.R
+```
+
+Quarto source:
+
+```text
+blog/posts/post5/
+```
+
+---
+
+## Blog Post 6
+
+### Topic
+
+*To be added.*
+
+### Data
+
+*To be added.*
+
+### Replication
+
+Analysis script:
+
+```text
+R/blog_post6_analysis.R
+```
+
+Quarto source:
+
+```text
+blog/posts/post6/
+```
+
+---
+
+## Blog Post 7
+
+### Topic
+
+*To be added.*
+
+### Data
+
+*To be added.*
+
+### Replication
+
+Analysis script:
+
+```text
+R/blog_post7_analysis.R
+```
+
+Quarto source:
+
+```text
+blog/posts/post7/
+```
+
+---
+
+## Blog Post 8
+
+### Topic
+
+*To be added.*
+
+### Data
+
+*To be added.*
+
+### Replication
+
+Analysis script:
+
+```text
+R/blog_post8_analysis.R
+```
+
+Quarto source:
+
+```text
+blog/posts/post8/
+```
+
+---
+
+## Blog Post 9
+
+### Topic
+
+*To be added.*
+
+### Data
+
+*To be added.*
+
+### Replication
+
+Analysis script:
+
+```text
+R/blog_post9_analysis.R
+```
+
+Quarto source:
+
+```text
+blog/posts/post9/
+```
+
+---
+
+## Blog Post 10
+
+### Topic
+
+*To be added.*
+
+### Data
+
+*To be added.*
+
+### Replication
+
+Analysis script:
+
+```text
+R/blog_post10_analysis.R
+```
+
+Quarto source:
+
+```text
+blog/posts/post10/
+```
+
+---
+
+## Blog Post 11
+
+### Topic
+
+*To be added.*
+
+### Data
+
+*To be added.*
+
+### Replication
+
+Analysis script:
+
+```text
+R/blog_post11_analysis.R
+```
+
+Quarto source:
+
+```text
+blog/posts/post11/
+```
+
+---
 
 ## Reproducibility
 
-The goal of this repository is to keep the published results connected to the code that generated them.
+The main goal of the repository is to keep the published results connected to the code that generated them.
 
 Whenever possible:
 
 - data are obtained or processed programmatically,
+- raw data are kept separate from derived data,
 - transformations are documented in R scripts,
-- population statistics use the appropriate weights when required,
+- sampling weights are used when required,
 - figures are generated directly from the analysis,
-- and derived outputs are saved rather than manually copied into the website.
+- and output files are saved rather than manually copied into the website.
 
-Some external datasets may not be stored in the repository because of licensing, redistribution restrictions, or file-size limits. In those cases, the README documents how the data should be obtained and where they should be placed for replication.
+Some external datasets may not be stored in the repository because of licensing, redistribution restrictions, or file-size limits. In those cases, the relevant blog-post section explains how to obtain the data.
 
 ## Website
 
-The rendered website is stored in the `docs/` directory and published through GitHub Pages.
+The rendered website is stored in:
+
+```text
+docs/
+```
+
+and published through GitHub Pages.
