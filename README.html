@@ -130,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="computational-methods-for-economists" class="level1">
 <h1>Computational Methods for Economists</h1>
 <p>This repository contains my course website, blog posts, code, data-processing files, and visualizations for <strong>Computational Methods for Economists</strong>.</p>
-<p>The published website is built with Quarto and hosted through GitHub Pages.</p>
+<p>The website is built with Quarto and published through GitHub Pages.</p>
 <section id="blog-posts" class="level2">
 <h2 class="anchored" data-anchor-id="blog-posts">Blog Posts</h2>
 <table class="caption-top table">
@@ -146,87 +146,138 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
+<td>Blog Post 1</td>
+<td><strong>What Does a p-Value Really Mean?</strong></td>
+</tr>
+<tr class="even">
 <td>Blog Post 2</td>
 <td><strong>What Skills Show Up Most in Data, AI, and ML Jobs?</strong></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Blog Post 3</td>
 <td><strong>How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?</strong></td>
 </tr>
+<tr class="even">
+<td>Blog Post 4</td>
+<td><strong>How Much Has the Federal Minimum Wage Lost in Purchasing Power?</strong></td>
+</tr>
+<tr class="odd">
+<td>Blog Post 5</td>
+<td><strong>Where Is Poverty Concentrated in Pennsylvania?</strong></td>
+</tr>
+<tr class="even">
+<td>Blog Post 6</td>
+<td><em>To be added</em></td>
+</tr>
+<tr class="odd">
+<td>Blog Post 7</td>
+<td><em>To be added</em></td>
+</tr>
+<tr class="even">
+<td>Blog Post 8</td>
+<td><em>To be added</em></td>
+</tr>
+<tr class="odd">
+<td>Blog Post 9</td>
+<td><em>To be added</em></td>
+</tr>
+<tr class="even">
+<td>Blog Post 10</td>
+<td><em>To be added</em></td>
+</tr>
+<tr class="odd">
+<td>Blog Post 11</td>
+<td><em>To be added</em></td>
+</tr>
 </tbody>
 </table>
-<p>Additional blog posts will be added to this repository throughout the course.</p>
 </section>
 <section id="repository-structure" class="level2">
 <h2 class="anchored" data-anchor-id="repository-structure">Repository Structure</h2>
-<p>The repository uses the following general structure:</p>
 <pre class="text"><code>.
 ├── blog/
 │   └── posts/
+│       ├── post1/
 │       ├── post2/
 │       ├── post3/
-│       └── ...
+│       ├── post4/
+│       ├── ...
+│       └── post11/
 │
 ├── R/
 │   └── analysis and data-processing scripts
 │
 ├── data/
 │   ├── raw/
-│   │   └── original source data when redistribution is permitted
+│   │   └── original source data
 │   └── derived/
-│       └── cleaned or summarized data created by the analysis
+│       └── cleaned or summarized data
 │
 ├── images/
 │   └── figures used in blog posts
+│
+├── results/
+│   └── additional analysis outputs
 │
 ├── docs/
 │   └── rendered website files for GitHub Pages
 │
 ├── README.md
 └── _quarto.yml</code></pre>
-<p>Files are given descriptive names so that the code, derived data, and figures associated with each blog post can be identified as additional posts are added.</p>
+<p>The goal is to keep the code, data, and figures for each blog post organized and reproducible.</p>
 </section>
 <section id="general-replication-instructions" class="level2">
 <h2 class="anchored" data-anchor-id="general-replication-instructions">General Replication Instructions</h2>
-<p>Each blog post is designed so that the main analysis can be reproduced from the code included in this repository.</p>
-<p>In general:</p>
+<p>In general, each blog post can be reproduced by:</p>
 <ol type="1">
 <li>Clone or download this repository.</li>
 <li>Open the RStudio project from the repository root.</li>
-<li>Obtain any external raw data that cannot legally or practically be included in the repository.</li>
-<li>Place those files in the location described for the relevant blog post.</li>
-<li>Install any R packages required by the corresponding analysis script.</li>
-<li>Run the relevant script in the <code>R/</code> folder.</li>
-<li>Derived data and figures will be generated programmatically and saved in the repository folders used by the website.</li>
+<li>Install the R packages required by the relevant analysis script.</li>
+<li>Obtain any external data that cannot be included directly in the repository.</li>
+<li>Place raw data in <code>data/raw/</code> when required.</li>
+<li>Run the corresponding script in the <code>R/</code> folder.</li>
+<li>Render the Quarto website.</li>
 </ol>
-<p>Raw data are not manually modified. Data cleaning, aggregation, and figure creation are handled in code whenever possible.</p>
+<p>Derived datasets and figures are generated programmatically whenever possible.</p>
 <hr>
+</section>
+<section id="blog-post-1" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post-1">Blog Post 1</h2>
+<section id="what-does-a-p-value-really-mean" class="level3">
+<h3 class="anchored" data-anchor-id="what-does-a-p-value-really-mean">What Does a p-Value Really Mean?</h3>
+<p>This post explains the interpretation of a p-value and some common misunderstandings surrounding statistical significance.</p>
+</section>
+<section id="quarto-source" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-source">Quarto Source</h3>
+<pre class="text"><code>blog/posts/post1/</code></pre>
+<hr>
+</section>
 </section>
 <section id="blog-post-2" class="level2">
 <h2 class="anchored" data-anchor-id="blog-post-2">Blog Post 2</h2>
 <section id="what-skills-show-up-most-in-data-ai-and-ml-jobs" class="level3">
 <h3 class="anchored" data-anchor-id="what-skills-show-up-most-in-data-ai-and-ml-jobs">What Skills Show Up Most in Data, AI, and ML Jobs?</h3>
 <p>Blog Post 2 analyzes job postings from the September 2026 Hacker News <strong>“Who is hiring?”</strong> thread to examine which technical skills appear most often in data, AI, and machine-learning jobs.</p>
-<p>The analysis uses <code>rvest</code> to collect the job-posting text, cleans the postings, identifies data-related positions, and summarizes commonly requested skills.</p>
+<p>The analysis uses <code>rvest</code> to collect job-posting text, identifies Data, AI, and ML-related positions, and counts commonly mentioned technical skills.</p>
 </section>
 <section id="data" class="level3">
 <h3 class="anchored" data-anchor-id="data">Data</h3>
-<p>The source data come from the Hacker News “Who is hiring?” thread.</p>
-<p>The analysis workflow includes:</p>
-<ul>
-<li>collecting the job postings with <code>rvest</code>,</li>
-<li>saving the source content,</li>
-<li>cleaning and filtering the postings,</li>
-<li>identifying data, AI, and machine-learning jobs,</li>
-<li>counting selected technical skills,</li>
-<li>and generating the visualization used in the blog post.</li>
-</ul>
+<p>The source data come from the September 2026 Hacker News <strong>“Who is hiring?”</strong> thread.</p>
+<p>Raw webpage content is saved in:</p>
+<pre class="text"><code>data/raw/</code></pre>
+<p>Cleaned job-posting data are stored in:</p>
+<pre class="text"><code>data/derived/</code></pre>
 </section>
 <section id="replication" class="level3">
 <h3 class="anchored" data-anchor-id="replication">Replication</h3>
-<p>The R code for Blog Post 2 is stored in the <code>R/</code> folder.</p>
-<p>Run the corresponding Blog Post 2 analysis script from the project root. The script reproduces the cleaned data and visualization used in the published post.</p>
-<p>The Quarto source for the post is located in:</p>
+<p>The main analysis script is:</p>
+<pre class="text"><code>R/scrape_hn_jobs.R</code></pre>
+<p>From the project root, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/scrape_hn_jobs.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The script downloads the webpage, saves the raw HTML, filters relevant hiring posts, calculates skill frequencies, and generates the visualization used in the blog post.</p>
+</section>
+<section id="quarto-source-1" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-source-1">Quarto Source</h3>
 <pre class="text"><code>blog/posts/post2/</code></pre>
 <hr>
 </section>
@@ -235,94 +286,330 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="blog-post-3">Blog Post 3</h2>
 <section id="how-unequal-was-the-covid-19-unemployment-shock-across-education-groups" class="level3">
 <h3 class="anchored" data-anchor-id="how-unequal-was-the-covid-19-unemployment-shock-across-education-groups">How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?</h3>
-<p>Blog Post 3 uses <strong>IPUMS Current Population Survey (CPS)</strong> microdata to examine how unemployment differed across education groups before, during, and after the COVID-19 labor-market shock.</p>
-<p>The analysis focuses on U.S. adults ages 25–64 and uses CPS sampling weights when calculating population unemployment rates.</p>
+<p>Blog Post 3 uses <strong>IPUMS Current Population Survey (CPS)</strong> microdata to examine how unemployment changed across education groups before, during, and after the COVID-19 shock.</p>
+<p>The analysis focuses on U.S. adults ages 25–64 and uses CPS sampling weights when calculating unemployment rates.</p>
 </section>
 <section id="data-1" class="level3">
 <h3 class="anchored" data-anchor-id="data-1">Data</h3>
 <p>The analysis uses IPUMS CPS Basic Monthly Samples from <strong>2015 through 2024</strong>.</p>
-<p>The main variables used are:</p>
-<ul>
-<li><code>YEAR</code></li>
-<li><code>MONTH</code></li>
-<li><code>AGE</code></li>
-<li><code>EDUC</code></li>
-<li><code>EMPSTAT</code></li>
-<li><code>LABFORCE</code></li>
-<li><code>WTFINL</code></li>
-</ul>
-<p>Education is grouped into four categories:</p>
-<ul>
-<li>Less than high school</li>
-<li>High school</li>
-<li>Some college / Associate</li>
-<li>Bachelor’s degree or higher</li>
-</ul>
-<p>Population unemployment rates are calculated using the CPS final person weight, <code>WTFINL</code>.</p>
-</section>
-<section id="raw-cps-data" class="level3">
-<h3 class="anchored" data-anchor-id="raw-cps-data">Raw CPS Data</h3>
-<p>Raw IPUMS CPS microdata are <strong>not included in this public repository</strong>.</p>
-<p>To reproduce Blog Post 3, obtain the corresponding IPUMS CPS extract and place the downloaded <code>.xml</code> and <code>.dat.gz</code> files in:</p>
+<p>The main variables are:</p>
+<pre class="text"><code>YEAR
+MONTH
+AGE
+EDUC
+EMPSTAT
+LABFORCE
+WTFINL</code></pre>
+<p>Raw IPUMS CPS microdata are not included in this public repository.</p>
+<p>To reproduce the analysis, place the corresponding IPUMS <code>.xml</code> and <code>.dat.gz</code> files in:</p>
 <pre class="text"><code>data/raw/</code></pre>
-<p>The extract should contain the 2015–2024 Basic Monthly CPS samples and the variables listed above.</p>
 </section>
 <section id="replication-1" class="level3">
 <h3 class="anchored" data-anchor-id="replication-1">Replication</h3>
 <p>The analysis script is:</p>
 <pre class="text"><code>R/blog_post3_analysis.R</code></pre>
-<p>From the project root, run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/blog_post3_analysis.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The script:</p>
-<ul>
-<li>reads the IPUMS CPS extract,</li>
-<li>restricts the sample to adults ages 25–64,</li>
-<li>constructs the four education groups,</li>
-<li>identifies employed and unemployed members of the labor force,</li>
-<li>calculates CPS-weighted monthly and annual unemployment rates,</li>
-<li>creates the age-group comparison,</li>
-<li>and generates all three figures used in Blog Post 3.</li>
-</ul>
-<p>The analysis produces the derived monthly data:</p>
+<p>Run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/blog_post3_analysis.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The script creates the education groups, calculates weighted unemployment rates, produces the derived monthly data, and generates all three figures used in the post.</p>
+<p>Derived data:</p>
 <pre class="text"><code>data/derived/unemployment_monthly.csv</code></pre>
-<p>and the following figures:</p>
+<p>Figures:</p>
 <pre class="text"><code>images/figure1_unemployment_education_2015_2024.png
 images/figure2_covid_monthly_unemployment.png
 images/figure3_age_education_unemployment.png</code></pre>
-<p>The Quarto source for the post is located in:</p>
+</section>
+<section id="quarto-source-2" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-source-2">Quarto Source</h3>
 <pre class="text"><code>blog/posts/post3/</code></pre>
 <hr>
 </section>
 </section>
-<section id="adding-future-blog-posts" class="level2">
-<h2 class="anchored" data-anchor-id="adding-future-blog-posts">Adding Future Blog Posts</h2>
-<p>Future blog posts will follow the same general organization.</p>
-<p>For each new post:</p>
+<section id="blog-post-4" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post-4">Blog Post 4</h2>
+<section id="how-much-has-the-federal-minimum-wage-lost-in-purchasing-power" class="level3">
+<h3 class="anchored" data-anchor-id="how-much-has-the-federal-minimum-wage-lost-in-purchasing-power">How Much Has the Federal Minimum Wage Lost in Purchasing Power?</h3>
+<p>Blog Post 4 uses FRED data to examine how the purchasing power of the U.S. federal minimum wage has changed over time.</p>
+<p>The analysis compares the nominal federal minimum wage with an inflation-adjusted version expressed in 2024 dollars. It also calculates what the July 2009 minimum wage of $7.25 would be if it had continued to increase with CPI.</p>
+</section>
+<section id="data-2" class="level3">
+<h3 class="anchored" data-anchor-id="data-2">Data</h3>
+<p>The analysis uses two monthly FRED series:</p>
+<pre class="text"><code>FEDMINNFRWG
+CPIAUCNS</code></pre>
+<p>The data are downloaded directly in R using the <code>fredr</code> package and the FRED API.</p>
+<p>Raw data are saved as:</p>
+<pre class="text"><code>data/raw/fred_federal_minimum_wage.csv
+data/raw/fred_cpi.csv</code></pre>
+<p>The derived dataset is:</p>
+<pre class="text"><code>data/derived/blog4_minimum_wage.csv</code></pre>
+</section>
+<section id="replication-2" class="level3">
+<h3 class="anchored" data-anchor-id="replication-2">Replication</h3>
+<p>The analysis script is:</p>
+<pre class="text"><code>R/blog_post4_analysis.R</code></pre>
+<p>A FRED API key is required. It should be stored in the user’s <code>.Renviron</code> file:</p>
+<pre class="text"><code>FRED_API_KEY=YOUR_API_KEY</code></pre>
+<p>Then run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/blog_post4_analysis.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The script downloads the FRED data, adjusts the minimum wage for inflation, calculates the July 2009 CPI counterfactual, and generates the three figures used in the post.</p>
+<p>Figures:</p>
+<pre class="text"><code>images/figure1_federal_minimum_wage.png
+images/figure2_real_minimum_wage.png
+images/figure3_minimum_wage_vs_inflation_path.png</code></pre>
+</section>
+<section id="quarto-source-3" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-source-3">Quarto Source</h3>
+<pre class="text"><code>blog/posts/post4/</code></pre>
+<hr>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
+</section>
+</section>
+<section id="blog-post-5-where-is-poverty-concentrated-in-pennsylvania" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post-5-where-is-poverty-concentrated-in-pennsylvania">Blog Post 5: Where Is Poverty Concentrated in Pennsylvania?</h2>
+</section>
+</section>
+<section id="this-post-explores-geographic-differences-in-poverty-rates-across-pennsylvanias-67-counties-using-python-and-gis-data." class="level1">
+<h1>This post explores geographic differences in poverty rates across Pennsylvania’s 67 counties using Python and GIS data.</h1>
+<section id="blog-post-5" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post-5">Blog Post 5</h2>
+<section id="where-is-poverty-concentrated-in-pennsylvania" class="level3">
+<h3 class="anchored" data-anchor-id="where-is-poverty-concentrated-in-pennsylvania">Where Is Poverty Concentrated in Pennsylvania?</h3>
+<p>Blog Post 5 uses Python and GIS data to examine geographic differences in poverty rates across Pennsylvania’s 67 counties.</p>
+<p>The analysis uses the 2024 American Community Survey (ACS) 5-year estimates, covering 2020–2024. County poverty rates are calculated using ACS table B17001 and matched to Census county boundaries using GEOID.</p>
+<p>The post includes a choropleth map of county poverty rates and a comparison of the 10 counties with the highest and lowest poverty rates. &gt;&gt;&gt;&gt;&gt;&gt;&gt; 77a210d (blog post 5)</p>
+<p>I used the 2024 American Community Survey (ACS) 5-year estimates, covering 2020–2024, and county boundary data from the U.S. Census Bureau. Poverty rates were calculated using ACS table B17001 and matched to county boundaries using GEOID.</p>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD The analysis includes: - A choropleth map showing county-level poverty rates across Pennsylvania. - A comparison of the 10 counties with the highest and lowest poverty rates. - A discussion of geographic differences between Philadelphia, its surrounding suburbs, and other parts of Pennsylvania. ======= The poverty data come from the U.S. Census Bureau’s 2024 ACS 5-year estimates.</p>
+<p>The main variables are:</p>
+<pre class="text"><code>B17001_001E
+B17001_002E</code></pre>
+<p>County boundary data come from the Census Bureau’s 2024 cartographic boundary files.</p>
+<p>Raw data are saved in:</p>
+<pre class="text"><code>data/raw/acs_2024_pa_county_poverty.csv
+data/raw/county_boundaries_2024/</code></pre>
+<p>Derived data are saved in:</p>
+<pre class="text"><code>data/derived/blog5_pa_county_poverty.csv
+data/derived/blog5_pa_county_poverty.gpkg</code></pre>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>77a210d (blog post 5)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</section>
+<section id="files" class="level3">
+<h3 class="anchored" data-anchor-id="files">Files</h3>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD - Blog post: <code>blog/posts/post5/index.qmd</code> - Python script: <code>python/blog_post5_analysis.py</code> - Raw ACS data: <code>data/raw/acs_2024_pa_county_poverty.csv</code> - Processed data: <code>data/derived/blog5_pa_county_poverty.csv</code> - GIS data: <code>data/derived/blog5_pa_county_poverty.gpkg</code> - Map: <code>images/blog5_pa_poverty_map.png</code> - Ranking chart: <code>images/blog5_pa_poverty_ranking.png</code></p>
+</section>
+<section id="reproducing-the-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="reproducing-the-analysis">Reproducing the Analysis</h3>
+<p>The analysis uses Python with the following packages:</p>
 <ul>
-<li>the Quarto source will be placed under <code>blog/posts/</code>,</li>
-<li>analysis code will be stored in <code>R/</code>,</li>
-<li>original data will be stored in <code>data/raw/</code> when redistribution is permitted,</li>
-<li>cleaned or summarized data will be stored in <code>data/derived/</code>,</li>
-<li>and figures used on the website will be saved programmatically.</li>
+<li>pandas</li>
+<li>geopandas</li>
+<li>matplotlib</li>
+<li>requests</li>
+<li>pyogrio</li>
 </ul>
-<p>New posts can be added without changing the overall repository structure. Their titles and topics can simply be added to the <strong>Blog Posts</strong> table above, along with a short replication section when necessary.</p>
+<p>Install the required packages:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> <span class="at">-m</span> pip install pandas geopandas matplotlib requests pyogrio</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+</section>
+<section id="a-free-census-api-key-is-required.-in-git-bash-set-the-environment-variable" class="level1">
+<h1>A free Census API key is required. In Git Bash, set the environment variable:</h1>
+<p>The analysis script is:</p>
+<pre class="text"><code>python/blog_post5_analysis.py</code></pre>
+<p>The required Python packages are <code>pandas</code>, <code>geopandas</code>, <code>matplotlib</code>, <code>requests</code>, and <code>pyogrio</code>.</p>
+<p>Install them using:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> <span class="at">-m</span> pip install pandas geopandas matplotlib requests pyogrio</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A free Census API key is required. In Git Bash, set the environment variable:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CENSUS_API_KEY</span><span class="op">=</span><span class="st">"YOUR_API_KEY"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then run from the repository root:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> python/blog_post5_analysis.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The script downloads the Census data, calculates county poverty rates, matches them to geographic boundaries, and generates both figures.</p>
+<p>Figures:</p>
+<pre class="text"><code>images/blog5_pa_poverty_map.png
+images/blog5_pa_poverty_ranking.png</code></pre>
+<p>Data sources:</p>
+<ul>
+<li><a href="https://api.census.gov/data/2024/acs/acs5">2024 ACS 5-Year Data</a></li>
+<li><a href="https://api.census.gov/data/2024/acs/acs5/groups/B17001.html">ACS Table B17001</a></li>
+<li><a href="https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_county_500k.zip">2024 Census County Boundaries</a></li>
+</ul>
+<section id="quarto-source-4" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-source-4">Quarto Source</h3>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>77a210d (blog post 5)</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CENSUS_API_KEY</span><span class="op">=</span><span class="st">"YOUR_API_KEY"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run the analysis from the repository’s root directory:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> python/blog_post5_analysis.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The script downloads the source data, calculates poverty rates, matches the data to county boundaries, and generates both figures.</p>
+</section>
+<section id="data-sources" class="level3">
+<h3 class="anchored" data-anchor-id="data-sources">Data Sources</h3>
+<ul>
+<li><a href="https://api.census.gov/data/2024/acs/acs5">2024 ACS 5-Year Data</a></li>
+<li><a href="https://api.census.gov/data/2024/acs/acs5/groups/B17001.html">ACS Table B17001</a></li>
+<li><a href="https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_county_500k.zip">2024 Census County Boundaries</a></li>
+</ul>
+<hr>
+<hr>
+</section>
+<section id="blog-post-6" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post-6">Blog Post 6</h2>
+<section id="topic" class="level3">
+<h3 class="anchored" data-anchor-id="topic">Topic</h3>
+<p><em>To be added.</em></p>
+</section>
+<section id="data-3" class="level3">
+<h3 class="anchored" data-anchor-id="data-3">Data</h3>
+<p><em>To be added.</em></p>
+</section>
+<section id="replication-3" class="level3">
+<h3 class="anchored" data-anchor-id="replication-3">Replication</h3>
+<p>Analysis script:</p>
+<pre class="text"><code>R/blog_post6_analysis.R</code></pre>
+<p>Quarto source:</p>
+<pre class="text"><code>blog/posts/post6/</code></pre>
+<hr>
+</section>
+</section>
+<section id="blog-post-7" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post-7">Blog Post 7</h2>
+<section id="topic-1" class="level3">
+<h3 class="anchored" data-anchor-id="topic-1">Topic</h3>
+<p><em>To be added.</em></p>
+</section>
+<section id="data-4" class="level3">
+<h3 class="anchored" data-anchor-id="data-4">Data</h3>
+<p><em>To be added.</em></p>
+</section>
+<section id="replication-4" class="level3">
+<h3 class="anchored" data-anchor-id="replication-4">Replication</h3>
+<p>Analysis script:</p>
+<pre class="text"><code>R/blog_post7_analysis.R</code></pre>
+<p>Quarto source:</p>
+<pre class="text"><code>blog/posts/post7/</code></pre>
+<hr>
+</section>
+</section>
+<section id="blog-post-8" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post-8">Blog Post 8</h2>
+<section id="topic-2" class="level3">
+<h3 class="anchored" data-anchor-id="topic-2">Topic</h3>
+<p><em>To be added.</em></p>
+</section>
+<section id="data-5" class="level3">
+<h3 class="anchored" data-anchor-id="data-5">Data</h3>
+<p><em>To be added.</em></p>
+</section>
+<section id="replication-5" class="level3">
+<h3 class="anchored" data-anchor-id="replication-5">Replication</h3>
+<p>Analysis script:</p>
+<pre class="text"><code>R/blog_post8_analysis.R</code></pre>
+<p>Quarto source:</p>
+<pre class="text"><code>blog/posts/post8/</code></pre>
+<hr>
+</section>
+</section>
+<section id="blog-post-9" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post-9">Blog Post 9</h2>
+<section id="topic-3" class="level3">
+<h3 class="anchored" data-anchor-id="topic-3">Topic</h3>
+<p><em>To be added.</em></p>
+</section>
+<section id="data-6" class="level3">
+<h3 class="anchored" data-anchor-id="data-6">Data</h3>
+<p><em>To be added.</em></p>
+</section>
+<section id="replication-6" class="level3">
+<h3 class="anchored" data-anchor-id="replication-6">Replication</h3>
+<p>Analysis script:</p>
+<pre class="text"><code>R/blog_post9_analysis.R</code></pre>
+<p>Quarto source:</p>
+<pre class="text"><code>blog/posts/post9/</code></pre>
+<hr>
+</section>
+</section>
+<section id="blog-post-10" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post-10">Blog Post 10</h2>
+<section id="topic-4" class="level3">
+<h3 class="anchored" data-anchor-id="topic-4">Topic</h3>
+<p><em>To be added.</em></p>
+</section>
+<section id="data-7" class="level3">
+<h3 class="anchored" data-anchor-id="data-7">Data</h3>
+<p><em>To be added.</em></p>
+</section>
+<section id="replication-7" class="level3">
+<h3 class="anchored" data-anchor-id="replication-7">Replication</h3>
+<p>Analysis script:</p>
+<pre class="text"><code>R/blog_post10_analysis.R</code></pre>
+<p>Quarto source:</p>
+<pre class="text"><code>blog/posts/post10/</code></pre>
+<hr>
+</section>
+</section>
+<section id="blog-post-11" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post-11">Blog Post 11</h2>
+<section id="topic-5" class="level3">
+<h3 class="anchored" data-anchor-id="topic-5">Topic</h3>
+<p><em>To be added.</em></p>
+</section>
+<section id="data-8" class="level3">
+<h3 class="anchored" data-anchor-id="data-8">Data</h3>
+<p><em>To be added.</em></p>
+</section>
+<section id="replication-8" class="level3">
+<h3 class="anchored" data-anchor-id="replication-8">Replication</h3>
+<p>Analysis script:</p>
+<pre class="text"><code>R/blog_post11_analysis.R</code></pre>
+<p>Quarto source:</p>
+<pre class="text"><code>blog/posts/post11/</code></pre>
+<hr>
+</section>
 </section>
 <section id="reproducibility" class="level2">
 <h2 class="anchored" data-anchor-id="reproducibility">Reproducibility</h2>
-<p>The goal of this repository is to keep the published results connected to the code that generated them.</p>
+<p>The main goal of the repository is to keep the published results connected to the code that generated them.</p>
 <p>Whenever possible:</p>
 <ul>
 <li>data are obtained or processed programmatically,</li>
+<li>raw data are kept separate from derived data,</li>
 <li>transformations are documented in R scripts,</li>
-<li>population statistics use the appropriate weights when required,</li>
+<li>sampling weights are used when required,</li>
 <li>figures are generated directly from the analysis,</li>
-<li>and derived outputs are saved rather than manually copied into the website.</li>
+<li>and output files are saved rather than manually copied into the website.</li>
 </ul>
-<p>Some external datasets may not be stored in the repository because of licensing, redistribution restrictions, or file-size limits. In those cases, the README documents how the data should be obtained and where they should be placed for replication.</p>
+<p>Some external datasets may not be stored in the repository because of licensing, redistribution restrictions, or file-size limits. In those cases, the relevant blog-post section explains how to obtain the data.</p>
 </section>
 <section id="website" class="level2">
 <h2 class="anchored" data-anchor-id="website">Website</h2>
-<p>The rendered website is stored in the <code>docs/</code> directory and published through GitHub Pages.</p>
+<p>The rendered website is stored in:</p>
+<pre class="text"><code>docs/</code></pre>
+<p>and published through GitHub Pages.</p>
 
 
 </section>

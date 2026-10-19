@@ -130,7 +130,7 @@
     "href": "blog/index.html",
     "title": "Blog",
     "section": "",
-    "text": "How Much Has the Federal Minimum Wage Lost in Purchasing Power?\n\n\n\n\n\n\n\n\nOct 5, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nHow Unequal Was the COVID-19 Unemployment Shock Across Education Groups?\n\n\n\n\n\n\n\n\nSep 28, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Skills Show Up Most in Data, AI, and ML Jobs?\n\n\n\n\n\n\n\n\nSep 20, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Does a p-Value Really Mean?\n\n\n\n\n\n\n\n\nSep 14, 2026\n\n\n\n\n\nNo matching items"
+    "text": "Where Is Poverty Concentrated in Pennsylvania?\n\n\nExploring county-level poverty rates across Pennsylvania using Census data and Python.\n\n\n\n\n\nOct 19, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nHow Much Has the Federal Minimum Wage Lost in Purchasing Power?\n\n\n\n\n\n\n\n\nOct 5, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nHow Unequal Was the COVID-19 Unemployment Shock Across Education Groups?\n\n\n\n\n\n\n\n\nSep 28, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Skills Show Up Most in Data, AI, and ML Jobs?\n\n\n\n\n\n\n\n\nSep 20, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Does a p-Value Really Mean?\n\n\n\n\n\n\n\n\nSep 14, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -271,5 +271,103 @@
     "title": "Eric Lu",
     "section": "",
     "text": "Eric Lu\nUniversity of Pennsylvaina\nWelcome to my personal website.\n\nQuick Links"
+  },
+  {
+    "objectID": "blog/posts/post5/index.html",
+    "href": "blog/posts/post5/index.html",
+    "title": "Where Is Poverty Concentrated in Pennsylvania?",
+    "section": "",
+    "text": "Pennsylvania has two big cities, a ring of wealthy suburbs, and a lot of small towns and farmland in between. I wanted to see which of the state’s 67 counties have the highest poverty rates, and in particular whether poverty here is mostly a big-city thing."
+  },
+  {
+    "objectID": "blog/posts/post5/index.html#introduction",
+    "href": "blog/posts/post5/index.html#introduction",
+    "title": "Where Is Poverty Concentrated in Pennsylvania?",
+    "section": "",
+    "text": "Pennsylvania is home to large cities, suburban communities, small towns, and rural areas. Although these places belong to the same state, their economic conditions can be quite different.\nI was interested in whether poverty in Pennsylvania is mainly an urban problem or whether it is also common in less populated areas. To explore this question, I used county-level poverty data and geographic boundaries from the U.S. Census Bureau.\nThe goal is to understand where poverty rates are higher or lower across the state’s 67 counties and what these differences might tell us about local economic conditions."
+  },
+  {
+    "objectID": "blog/posts/post5/index.html#data-and-methods",
+    "href": "blog/posts/post5/index.html#data-and-methods",
+    "title": "Where Is Poverty Concentrated in Pennsylvania?",
+    "section": "Data and Methods",
+    "text": "Data and Methods\nI used the 2024 American Community Survey (ACS) 5-year estimates, which combine survey information collected from 2020 through 2024. I chose the five-year estimates because they provide data for every county in Pennsylvania, including counties with relatively small populations. These estimates describe the five-year period rather than poverty in 2024 alone.\nThe data come from ACS table B17001. I used two variables:\n\nB17001_001E: Total population for whom poverty status is determined\nB17001_002E: Population below the poverty line\n\nThe poverty rate is calculated by dividing the number of people below the poverty line by the population for whom poverty status is determined, then multiplying by 100.\nI downloaded the data through the Census API and used county boundary files from the Census Bureau. Using Python, I matched the poverty data to the geographic data by county GEOID. All 67 counties were successfully matched.\nI then used GeoPandas and Matplotlib to create a map and a comparison chart."
+  },
+  {
+    "objectID": "blog/posts/post5/index.html#mapping-poverty-in-pennsylvania",
+    "href": "blog/posts/post5/index.html#mapping-poverty-in-pennsylvania",
+    "title": "Where Is Poverty Concentrated in Pennsylvania?",
+    "section": "Mapping Poverty in Pennsylvania",
+    "text": "Mapping Poverty in Pennsylvania\n\n\n\nPoverty rates across Pennsylvania counties. Darker colors indicate higher poverty rates. Source: U.S. Census Bureau, 2024 ACS 5-year estimates.\n\n\nFigure 1. County-level poverty rates in Pennsylvania.\nThe map shows that poverty is not evenly distributed across Pennsylvania. Some counties have much higher poverty rates than their neighbors, and there is no simple east-to-west pattern.\nOne noticeable example is Philadelphia, which has a poverty rate of 21.4%. This is much higher than the rates in nearby suburban counties. Chester, Bucks, and Montgomery counties all have poverty rates below 7%.\nHowever, higher poverty rates are not limited to Philadelphia. Several counties in central and western Pennsylvania also have relatively high rates. This suggests that poverty is not exclusively an urban issue.\nAnother interesting observation is that geographic proximity does not necessarily mean similar economic conditions. Counties located near one another can have very different poverty rates."
+  },
+  {
+    "objectID": "blog/posts/post5/index.html#comparing-counties-with-high-and-low-poverty-rates",
+    "href": "blog/posts/post5/index.html#comparing-counties-with-high-and-low-poverty-rates",
+    "title": "Where Is Poverty Concentrated in Pennsylvania?",
+    "section": "Comparing Counties with High and Low Poverty Rates",
+    "text": "Comparing Counties with High and Low Poverty Rates\n\n\n\nThe ten counties with the highest and lowest poverty rates in Pennsylvania. Source: U.S. Census Bureau, 2024 ACS 5-year estimates.\n\n\nFigure 2. The ten highest and ten lowest county poverty rates in Pennsylvania.\nThe second figure makes these differences easier to compare.\nPhiladelphia has the highest poverty rate at 21.4%, followed by Fayette County at 16.8% and Centre County at 16.3%. Mifflin County is also relatively high at 16.2%.\nAt the other end, Chester County has the lowest poverty rate at 6.0%, followed by Bucks County at 6.1% and Montgomery County at 6.5%.\nThe difference between Philadelphia and Chester County is 15.4 percentage points. Philadelphia’s poverty rate is more than three times Chester County’s, even though the two counties are in the same metropolitan region.\nI also found Centre County interesting. It includes State College and Penn State University, so the large student population may affect how we interpret its poverty rate. A county’s poverty rate does not necessarily tell us whether most residents face the same economic circumstances.\nThe rankings also show that we cannot simply divide Pennsylvania into wealthy urban areas and poorer rural areas. Philadelphia has the highest poverty rate, while several suburban counties have some of the lowest rates. At the same time, counties outside major metropolitan areas also appear among those with high poverty rates."
+  },
+  {
+    "objectID": "blog/posts/post5/index.html#what-do-these-patterns-tell-us",
+    "href": "blog/posts/post5/index.html#what-do-these-patterns-tell-us",
+    "title": "Where Is Poverty Concentrated in Pennsylvania?",
+    "section": "What Do These Patterns Tell Us?",
+    "text": "What Do These Patterns Tell Us?\nOne possible explanation for these differences is that counties have different employment opportunities, industries, housing markets, and population characteristics. These factors may influence local economic conditions.\nFor example, Philadelphia and its surrounding suburban counties are connected through the same regional economy, yet their poverty rates differ substantially. This raises questions about how income, employment opportunities, and residential patterns vary within metropolitan areas.\nHowever, the maps alone cannot explain why these differences exist. We would need additional data on employment, education, demographics, and housing to investigate the possible causes.\nThere is also an important limitation to county-level maps: each county is represented by a single average poverty rate. A county with a relatively low poverty rate can still contain neighborhoods where poverty is widespread. Similarly, a county with a high poverty rate does not mean every community within it is equally affected.\nBecause of this, county-level maps are useful for identifying broad geographic patterns, but they do not capture all the economic differences within counties."
+  },
+  {
+    "objectID": "blog/posts/post5/index.html#conclusion",
+    "href": "blog/posts/post5/index.html#conclusion",
+    "title": "Where Is Poverty Concentrated in Pennsylvania?",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe main takeaway from this analysis is that poverty in Pennsylvania cannot be explained by a simple urban-versus-rural distinction.\nPhiladelphia has the highest county poverty rate, but several less populated counties also experience relatively high poverty rates. Meanwhile, some of Philadelphia’s neighboring suburban counties have among the lowest rates in the state.\nWhat surprised me most was how different poverty rates could be between nearby counties, especially within southeastern Pennsylvania.\nThis analysis shows how geographic data can help identify economic differences that might be less obvious in a regular data table. It also raises questions about the local factors behind these patterns, which would be interesting to explore with more detailed data."
+  },
+  {
+    "objectID": "blog/posts/post5/index.html#data-sources-and-code",
+    "href": "blog/posts/post5/index.html#data-sources-and-code",
+    "title": "Where Is Poverty Concentrated in Pennsylvania?",
+    "section": "Data Sources and Code",
+    "text": "Data Sources and Code\n\nU.S. Census Bureau — American Community Survey\n2024 ACS 5-Year Estimates — Poverty Status Table B17001\nU.S. Census Bureau — 2024 County Boundary Files\n\nThe analysis was done in Python using Pandas, GeoPandas, Requests, and Matplotlib. The data cleaning, county matching, and figures can be reproduced with python/blog_post5_analysis.py in my GitHub repo. You’ll need a free Census API key to pull the data."
+  },
+  {
+    "objectID": "blog/posts/post5/index.html#why-i-looked-at-this",
+    "href": "blog/posts/post5/index.html#why-i-looked-at-this",
+    "title": "Where Is Poverty Concentrated in Pennsylvania?",
+    "section": "",
+    "text": "Pennsylvania has two big cities, a ring of wealthy suburbs, and a lot of small towns and farmland in between. I wanted to see which of the state’s 67 counties have the highest poverty rates, and in particular whether poverty here is mostly a big-city thing."
+  },
+  {
+    "objectID": "blog/posts/post5/index.html#data",
+    "href": "blog/posts/post5/index.html#data",
+    "title": "Where Is Poverty Concentrated in Pennsylvania?",
+    "section": "Data",
+    "text": "Data\nI used the 2024 American Community Survey (ACS) 5-year estimates, which pool survey responses from 2020 to 2024. The 1-year estimates only cover counties with at least 65,000 people, so the 5-year version is the only way to get numbers for every county. The trade-off is that these numbers describe the whole 2020–2024 period, not 2024 by itself.\nFrom ACS table B17001 I pulled two variables:\n\nB17001_001E: people whose poverty status is determined\nB17001_002E: people below the poverty line\n\nThe poverty rate is just the second divided by the first, times 100.\nI got the data from the Census API and joined it to the Census Bureau’s county boundary file on GEOID. All 67 counties matched. The map and bar chart were made with GeoPandas and Matplotlib."
+  },
+  {
+    "objectID": "blog/posts/post5/index.html#the-map",
+    "href": "blog/posts/post5/index.html#the-map",
+    "title": "Where Is Poverty Concentrated in Pennsylvania?",
+    "section": "The map",
+    "text": "The map\n\n\n\nPoverty rates across Pennsylvania counties. Darker colors indicate higher poverty rates. Source: U.S. Census Bureau, 2024 ACS 5-year estimates.\n\n\nFigure 1. County-level poverty rates in Pennsylvania.\nPhiladelphia stands out right away at 21.4%. The suburban counties next to it look completely different: Chester, Bucks, and Montgomery are all under 7%.\nBut Philadelphia isn’t the only dark spot. Several counties in central and western Pennsylvania also have fairly high rates, and there’s no clean east-west split. Neighboring counties often end up with quite different numbers."
+  },
+  {
+    "objectID": "blog/posts/post5/index.html#highest-and-lowest-counties",
+    "href": "blog/posts/post5/index.html#highest-and-lowest-counties",
+    "title": "Where Is Poverty Concentrated in Pennsylvania?",
+    "section": "Highest and lowest counties",
+    "text": "Highest and lowest counties\n\n\n\nThe ten counties with the highest and lowest poverty rates in Pennsylvania. Source: U.S. Census Bureau, 2024 ACS 5-year estimates.\n\n\nFigure 2. The ten highest and ten lowest county poverty rates in Pennsylvania.\nAt the top are Philadelphia (21.4%), Fayette (16.8%), Centre (16.3%), and Mifflin (16.2%). At the bottom are Chester (6.0%), Bucks (6.1%), and Montgomery (6.5%).\nThe gap between Philadelphia and Chester County is 15.4 percentage points. Philadelphia’s rate is more than three times Chester’s, and the two are part of the same metro area.\nCentre County comes with a caveat. It’s home to Penn State, and college students living off campus usually report little income, which probably pushes the county’s rate up. So a high number there doesn’t mean the same thing as a high number in Fayette.\nPut together, the rankings don’t fit a simple “poor rural, rich urban” story. The poorest county is the state’s biggest city, the least poor are its own suburbs, and smaller counties like Fayette and Mifflin are near the top too."
+  },
+  {
+    "objectID": "blog/posts/post5/index.html#whats-behind-the-differences",
+    "href": "blog/posts/post5/index.html#whats-behind-the-differences",
+    "title": "Where Is Poverty Concentrated in Pennsylvania?",
+    "section": "What’s behind the differences?",
+    "text": "What’s behind the differences?\nI can’t answer that with this data. Industry mix, access to jobs, housing costs, and who lives where all likely play a role. Philadelphia and its suburbs share one regional job market but have very different poverty rates, which makes me suspect that where people live matters as much as where the jobs are. That’s a guess, though. Testing it would take data on employment, education, demographics, and housing.\nIt’s also worth remembering that each county gets a single number. A county with a low overall rate can still have neighborhoods where poverty is common, and not every part of a high-poverty county is equally affected. Tract-level data would show much more of that variation."
+  },
+  {
+    "objectID": "blog/posts/post5/index.html#wrapping-up",
+    "href": "blog/posts/post5/index.html#wrapping-up",
+    "title": "Where Is Poverty Concentrated in Pennsylvania?",
+    "section": "Wrapping up",
+    "text": "Wrapping up\nPoverty in Pennsylvania doesn’t split neatly into urban and rural. Philadelphia has the highest rate, its suburbs have the lowest, and several smaller counties farther west rank high as well. The part I didn’t expect was how big the gaps are between counties that sit right next to each other, especially in the southeast corner of the state. I’d like to come back to this with tract-level data to see what’s happening inside these counties."
   }
 ]
