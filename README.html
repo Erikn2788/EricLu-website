@@ -167,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td>Blog Post 6</td>
-<td><em>To be added</em></td>
+<td><strong>Matching Generations with SQL: How Much Does Income Persist Across Generations?</strong></td>
 </tr>
 <tr class="odd">
 <td>Blog Post 7</td>
@@ -201,11 +201,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 │       ├── post2/
 │       ├── post3/
 │       ├── post4/
+│       ├── post5/
+│       ├── post6/
 │       ├── ...
 │       └── post11/
 │
 ├── R/
-│   └── analysis and data-processing scripts
+│   └── R analysis and data-processing scripts
+│
+├── python/
+│   └── Python analysis and data-processing scripts
 │
 ├── data/
 │   ├── raw/
@@ -232,10 +237,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li>Clone or download this repository.</li>
 <li>Open the RStudio project from the repository root.</li>
-<li>Install the R packages required by the relevant analysis script.</li>
+<li>Install the R or Python packages required by the relevant analysis script.</li>
 <li>Obtain any external data that cannot be included directly in the repository.</li>
 <li>Place raw data in <code>data/raw/</code> when required.</li>
-<li>Run the corresponding script in the <code>R/</code> folder.</li>
+<li>Run the corresponding analysis script in the <code>R/</code> or <code>python/</code> folder.</li>
 <li>Render the Quarto website.</li>
 </ol>
 <p>Derived datasets and figures are generated programmatically whenever possible.</p>
@@ -361,164 +366,157 @@ images/figure3_minimum_wage_vs_inflation_path.png</code></pre>
 <h3 class="anchored" data-anchor-id="quarto-source-3">Quarto Source</h3>
 <pre class="text"><code>blog/posts/post4/</code></pre>
 <hr>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</p>
 </section>
 </section>
-<section id="blog-post-5-where-is-poverty-concentrated-in-pennsylvania" class="level2">
-<h2 class="anchored" data-anchor-id="blog-post-5-where-is-poverty-concentrated-in-pennsylvania">Blog Post 5: Where Is Poverty Concentrated in Pennsylvania?</h2>
-</section>
-</section>
-<section id="this-post-explores-geographic-differences-in-poverty-rates-across-pennsylvanias-67-counties-using-python-and-gis-data." class="level1">
-<h1>This post explores geographic differences in poverty rates across Pennsylvania’s 67 counties using Python and GIS data.</h1>
 <section id="blog-post-5" class="level2">
 <h2 class="anchored" data-anchor-id="blog-post-5">Blog Post 5</h2>
 <section id="where-is-poverty-concentrated-in-pennsylvania" class="level3">
 <h3 class="anchored" data-anchor-id="where-is-poverty-concentrated-in-pennsylvania">Where Is Poverty Concentrated in Pennsylvania?</h3>
 <p>Blog Post 5 uses Python and GIS data to examine geographic differences in poverty rates across Pennsylvania’s 67 counties.</p>
-<p>The analysis uses the 2024 American Community Survey (ACS) 5-year estimates, covering 2020–2024. County poverty rates are calculated using ACS table B17001 and matched to Census county boundaries using GEOID.</p>
-<p>The post includes a choropleth map of county poverty rates and a comparison of the 10 counties with the highest and lowest poverty rates. &gt;&gt;&gt;&gt;&gt;&gt;&gt; 77a210d (blog post 5)</p>
-<p>I used the 2024 American Community Survey (ACS) 5-year estimates, covering 2020–2024, and county boundary data from the U.S. Census Bureau. Poverty rates were calculated using ACS table B17001 and matched to county boundaries using GEOID.</p>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD The analysis includes: - A choropleth map showing county-level poverty rates across Pennsylvania. - A comparison of the 10 counties with the highest and lowest poverty rates. - A discussion of geographic differences between Philadelphia, its surrounding suburbs, and other parts of Pennsylvania. ======= The poverty data come from the U.S. Census Bureau’s 2024 ACS 5-year estimates.</p>
+<p>The analysis uses the 2024 American Community Survey (ACS) 5-year estimates, covering 2020–2024. County poverty rates are calculated using ACS table B17001 and matched to geographic boundaries using county GEOID.</p>
+<p>The post includes a choropleth map showing the geographic distribution of poverty and a comparison of the 10 counties with the highest and lowest poverty rates.</p>
+</section>
+<section id="data-3" class="level3">
+<h3 class="anchored" data-anchor-id="data-3">Data</h3>
+<p>The poverty data come from the U.S. Census Bureau’s 2024 ACS 5-year estimates.</p>
 <p>The main variables are:</p>
 <pre class="text"><code>B17001_001E
 B17001_002E</code></pre>
+<p><code>B17001_001E</code> represents the population for whom poverty status is determined, while <code>B17001_002E</code> represents the population below the poverty line.</p>
+<p>County poverty rates are calculated as the population below the poverty line divided by the population for whom poverty status is determined, multiplied by 100.</p>
 <p>County boundary data come from the Census Bureau’s 2024 cartographic boundary files.</p>
-<p>Raw data are saved in:</p>
+<p>Raw data are saved as:</p>
 <pre class="text"><code>data/raw/acs_2024_pa_county_poverty.csv
+data/raw/cb_2024_us_county_500k.zip
 data/raw/county_boundaries_2024/</code></pre>
-<p>Derived data are saved in:</p>
+<p>Derived data are saved as:</p>
 <pre class="text"><code>data/derived/blog5_pa_county_poverty.csv
 data/derived/blog5_pa_county_poverty.gpkg</code></pre>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>77a210d (blog post 5)</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</section>
-<section id="files" class="level3">
-<h3 class="anchored" data-anchor-id="files">Files</h3>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD - Blog post: <code>blog/posts/post5/index.qmd</code> - Python script: <code>python/blog_post5_analysis.py</code> - Raw ACS data: <code>data/raw/acs_2024_pa_county_poverty.csv</code> - Processed data: <code>data/derived/blog5_pa_county_poverty.csv</code> - GIS data: <code>data/derived/blog5_pa_county_poverty.gpkg</code> - Map: <code>images/blog5_pa_poverty_map.png</code> - Ranking chart: <code>images/blog5_pa_poverty_ranking.png</code></p>
-</section>
-<section id="reproducing-the-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="reproducing-the-analysis">Reproducing the Analysis</h3>
-<p>The analysis uses Python with the following packages:</p>
-<ul>
-<li>pandas</li>
-<li>geopandas</li>
-<li>matplotlib</li>
-<li>requests</li>
-<li>pyogrio</li>
-</ul>
-<p>Install the required packages:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> <span class="at">-m</span> pip install pandas geopandas matplotlib requests pyogrio</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-</section>
-</section>
-<section id="a-free-census-api-key-is-required.-in-git-bash-set-the-environment-variable" class="level1">
-<h1>A free Census API key is required. In Git Bash, set the environment variable:</h1>
-<p>The analysis script is:</p>
-<pre class="text"><code>python/blog_post5_analysis.py</code></pre>
-<p>The required Python packages are <code>pandas</code>, <code>geopandas</code>, <code>matplotlib</code>, <code>requests</code>, and <code>pyogrio</code>.</p>
-<p>Install them using:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> <span class="at">-m</span> pip install pandas geopandas matplotlib requests pyogrio</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>A free Census API key is required. In Git Bash, set the environment variable:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CENSUS_API_KEY</span><span class="op">=</span><span class="st">"YOUR_API_KEY"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Then run from the repository root:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> python/blog_post5_analysis.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The script downloads the Census data, calculates county poverty rates, matches them to geographic boundaries, and generates both figures.</p>
-<p>Figures:</p>
-<pre class="text"><code>images/blog5_pa_poverty_map.png
-images/blog5_pa_poverty_ranking.png</code></pre>
 <p>Data sources:</p>
 <ul>
 <li><a href="https://api.census.gov/data/2024/acs/acs5">2024 ACS 5-Year Data</a></li>
 <li><a href="https://api.census.gov/data/2024/acs/acs5/groups/B17001.html">ACS Table B17001</a></li>
 <li><a href="https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_county_500k.zip">2024 Census County Boundaries</a></li>
 </ul>
-<section id="quarto-source-4" class="level3">
-<h3 class="anchored" data-anchor-id="quarto-source-4">Quarto Source</h3>
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<blockquote class="blockquote">
-<p>77a210d (blog post 5)</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CENSUS_API_KEY</span><span class="op">=</span><span class="st">"YOUR_API_KEY"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Run the analysis from the repository’s root directory:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> python/blog_post5_analysis.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The script downloads the source data, calculates poverty rates, matches the data to county boundaries, and generates both figures.</p>
-</section>
-<section id="data-sources" class="level3">
-<h3 class="anchored" data-anchor-id="data-sources">Data Sources</h3>
-<ul>
-<li><a href="https://api.census.gov/data/2024/acs/acs5">2024 ACS 5-Year Data</a></li>
-<li><a href="https://api.census.gov/data/2024/acs/acs5/groups/B17001.html">ACS Table B17001</a></li>
-<li><a href="https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_county_500k.zip">2024 Census County Boundaries</a></li>
-</ul>
-<hr>
-<hr>
-</section>
-<section id="blog-post-6" class="level2">
-<h2 class="anchored" data-anchor-id="blog-post-6">Blog Post 6</h2>
-<section id="topic" class="level3">
-<h3 class="anchored" data-anchor-id="topic">Topic</h3>
-<p><em>To be added.</em></p>
-</section>
-<section id="data-3" class="level3">
-<h3 class="anchored" data-anchor-id="data-3">Data</h3>
-<p><em>To be added.</em></p>
 </section>
 <section id="replication-3" class="level3">
 <h3 class="anchored" data-anchor-id="replication-3">Replication</h3>
-<p>Analysis script:</p>
-<pre class="text"><code>R/blog_post6_analysis.R</code></pre>
-<p>Quarto source:</p>
+<p>The analysis script is:</p>
+<pre class="text"><code>python/blog_post5_analysis.py</code></pre>
+<p>The analysis requires the following Python packages:</p>
+<pre class="text"><code>pandas
+geopandas
+matplotlib
+requests
+pyogrio</code></pre>
+<p>Install the required packages from the Terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> <span class="at">-m</span> pip install pandas geopandas matplotlib requests pyogrio</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A free Census API key is required. In Git Bash, set the environment variable:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">CENSUS_API_KEY</span><span class="op">=</span><span class="st">"YOUR_API_KEY"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Then run the script from the repository root:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> python/blog_post5_analysis.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The script downloads the Census data, calculates county poverty rates, matches the data to geographic boundaries using GEOID, and generates the two figures used in the post.</p>
+<p>Figures:</p>
+<pre class="text"><code>images/blog5_pa_poverty_map.png
+images/blog5_pa_poverty_ranking.png</code></pre>
+</section>
+<section id="quarto-source-4" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-source-4">Quarto Source</h3>
+<pre class="text"><code>blog/posts/post5/</code></pre>
+<hr>
+</section>
+</section>
+<section id="blog-post-6" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post-6">Blog Post 6</h2>
+<section id="matching-generations-with-sql-how-much-does-income-persist-across-generations" class="level3">
+<h3 class="anchored" data-anchor-id="matching-generations-with-sql-how-much-does-income-persist-across-generations">Matching Generations with SQL: How Much Does Income Persist Across Generations?</h3>
+<p>Blog Post 6 uses Python and SQL to study the relationship between mothers’ earnings and their children’s earnings as adults.</p>
+<p>The analysis combines two longitudinal datasets from the National Longitudinal Surveys. Using SQLite, I matched mothers with their children, calculated earnings across multiple years, and estimated intergenerational earnings elasticity (IGE).</p>
+<p>I compared estimates based on single-year earnings and multi-year average earnings. I also examined whether the estimated relationship changes with the child’s age.</p>
+</section>
+<section id="data-4" class="level3">
+<h3 class="anchored" data-anchor-id="data-4">Data</h3>
+<p>The analysis uses two datasets:</p>
+<ul>
+<li><strong>NLSY79:</strong> Longitudinal data on the mothers.</li>
+<li><strong>NLSY79 Child and Young Adult (NLSCYA):</strong> Longitudinal data on their biological children.</li>
+</ul>
+<p>The selected survey years are:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Dataset</th>
+<th>Survey Years</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>NLSY79</td>
+<td>1998, 2000, 2002, 2004</td>
+</tr>
+<tr class="even">
+<td>NLSCYA</td>
+<td>2012, 2014, 2016, 2018, 2020</td>
+</tr>
+</tbody>
+</table>
+<p>The main variables include individual IDs, mother IDs, age at interview, and annual wage and salary earnings.</p>
+<p>The earnings data were adjusted to 2024 dollars using annual CPI-U values from the U.S. Bureau of Labor Statistics.</p>
+<p>The full NLS public-use files are not included in this repository because of their size and to avoid redistributing individual-level survey data.</p>
+<p>Data sources:</p>
+<ul>
+<li><a href="https://www.nlsinfo.org/content/cohorts/nlsy79">NLSY79</a></li>
+<li><a href="https://www.nlsinfo.org/content/cohorts/nlsy79-children">NLSY79 Child and Young Adult</a></li>
+<li><a href="https://www.nlsinfo.org/content/access-data-investigator">NLS Investigator</a></li>
+<li><a href="https://www.bls.gov/cpi/">BLS Consumer Price Index</a></li>
+</ul>
+</section>
+<section id="replication-4" class="level3">
+<h3 class="anchored" data-anchor-id="replication-4">Replication</h3>
+<p>The data download script is:</p>
+<pre class="text"><code>python/blog_post6_download.py</code></pre>
+<p>The main analysis script is:</p>
+<pre class="text"><code>python/blog_post6_analysis.py</code></pre>
+<p>The required Python packages are <code>requests</code>, <code>pandas</code>, <code>numpy</code>, <code>matplotlib</code>, and <code>statsmodels</code>. The analysis also uses Python’s built-in <code>sqlite3</code> library.</p>
+<p>Install the required packages:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> <span class="at">-m</span> pip install requests pandas numpy matplotlib statsmodels</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Step 1: Download the original NLS data.</strong></p>
+<p>From the repository root, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> python/blog_post6_download.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The download script retrieves the NLSY79 and NLSCYA public-use ZIP files and saves them in:</p>
+<pre class="text"><code>data/raw/nlsy79_all_1979-2022.zip
+data/raw/nlscya_all_1979-2020.zip</code></pre>
+<p>These archives contain the complete source data and may take some time to download and process.</p>
+<p><strong>Step 2: Run the analysis.</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ex">py</span> python/blog_post6_analysis.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The script extracts the required variables from the ZIP files, reshapes the longitudinal data, and uses SQL <code>JOIN</code>, <code>GROUP BY</code>, and <code>AVG()</code> operations to match mothers and children and calculate average earnings.</p>
+<p>The analysis restricts the main sample to mother-child pairs with at least two positive earnings observations for each generation between ages 30 and 40.</p>
+<p>The final matched sample contains <strong>789 mother-child pairs from 620 mothers</strong>.</p>
+<p>The script then estimates two IGE regressions:</p>
+<ul>
+<li>Single-year earnings IGE: <strong>0.2042</strong></li>
+<li>Multi-year average earnings IGE: <strong>0.2498</strong></li>
+</ul>
+<p>A separate age-interaction analysis examines whether the estimated IGE varies with the child’s age. The interaction was not statistically significant (p = 0.7457).</p>
+<p>Derived summary results:</p>
+<pre class="text"><code>data/derived/blog6_ige_comparison.csv
+data/derived/blog6_ige_by_age.csv</code></pre>
+<p>Figures:</p>
+<pre class="text"><code>images/blog6_ige_comparison.png
+images/blog6_ige_by_age.png</code></pre>
+<p>The analysis uses standard errors clustered by mother to account for multiple children from the same mother.</p>
+<p>The reported results describe associations between mothers’ and children’s earnings, not causal effects.</p>
+</section>
+<section id="quarto-source-5" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-source-5">Quarto Source</h3>
 <pre class="text"><code>blog/posts/post6/</code></pre>
 <hr>
 </section>
 </section>
 <section id="blog-post-7" class="level2">
 <h2 class="anchored" data-anchor-id="blog-post-7">Blog Post 7</h2>
-<section id="topic-1" class="level3">
-<h3 class="anchored" data-anchor-id="topic-1">Topic</h3>
-<p><em>To be added.</em></p>
-</section>
-<section id="data-4" class="level3">
-<h3 class="anchored" data-anchor-id="data-4">Data</h3>
-<p><em>To be added.</em></p>
-</section>
-<section id="replication-4" class="level3">
-<h3 class="anchored" data-anchor-id="replication-4">Replication</h3>
-<p>Analysis script:</p>
-<pre class="text"><code>R/blog_post7_analysis.R</code></pre>
-<p>Quarto source:</p>
-<pre class="text"><code>blog/posts/post7/</code></pre>
-<hr>
-</section>
-</section>
-<section id="blog-post-8" class="level2">
-<h2 class="anchored" data-anchor-id="blog-post-8">Blog Post 8</h2>
-<section id="topic-2" class="level3">
-<h3 class="anchored" data-anchor-id="topic-2">Topic</h3>
+<section id="topic" class="level3">
+<h3 class="anchored" data-anchor-id="topic">Topic</h3>
 <p><em>To be added.</em></p>
 </section>
 <section id="data-5" class="level3">
@@ -528,16 +526,16 @@ images/blog5_pa_poverty_ranking.png</code></pre>
 <section id="replication-5" class="level3">
 <h3 class="anchored" data-anchor-id="replication-5">Replication</h3>
 <p>Analysis script:</p>
-<pre class="text"><code>R/blog_post8_analysis.R</code></pre>
+<pre class="text"><code>R/blog_post7_analysis.R</code></pre>
 <p>Quarto source:</p>
-<pre class="text"><code>blog/posts/post8/</code></pre>
+<pre class="text"><code>blog/posts/post7/</code></pre>
 <hr>
 </section>
 </section>
-<section id="blog-post-9" class="level2">
-<h2 class="anchored" data-anchor-id="blog-post-9">Blog Post 9</h2>
-<section id="topic-3" class="level3">
-<h3 class="anchored" data-anchor-id="topic-3">Topic</h3>
+<section id="blog-post-8" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post-8">Blog Post 8</h2>
+<section id="topic-1" class="level3">
+<h3 class="anchored" data-anchor-id="topic-1">Topic</h3>
 <p><em>To be added.</em></p>
 </section>
 <section id="data-6" class="level3">
@@ -547,16 +545,16 @@ images/blog5_pa_poverty_ranking.png</code></pre>
 <section id="replication-6" class="level3">
 <h3 class="anchored" data-anchor-id="replication-6">Replication</h3>
 <p>Analysis script:</p>
-<pre class="text"><code>R/blog_post9_analysis.R</code></pre>
+<pre class="text"><code>R/blog_post8_analysis.R</code></pre>
 <p>Quarto source:</p>
-<pre class="text"><code>blog/posts/post9/</code></pre>
+<pre class="text"><code>blog/posts/post8/</code></pre>
 <hr>
 </section>
 </section>
-<section id="blog-post-10" class="level2">
-<h2 class="anchored" data-anchor-id="blog-post-10">Blog Post 10</h2>
-<section id="topic-4" class="level3">
-<h3 class="anchored" data-anchor-id="topic-4">Topic</h3>
+<section id="blog-post-9" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post-9">Blog Post 9</h2>
+<section id="topic-2" class="level3">
+<h3 class="anchored" data-anchor-id="topic-2">Topic</h3>
 <p><em>To be added.</em></p>
 </section>
 <section id="data-7" class="level3">
@@ -566,16 +564,16 @@ images/blog5_pa_poverty_ranking.png</code></pre>
 <section id="replication-7" class="level3">
 <h3 class="anchored" data-anchor-id="replication-7">Replication</h3>
 <p>Analysis script:</p>
-<pre class="text"><code>R/blog_post10_analysis.R</code></pre>
+<pre class="text"><code>R/blog_post9_analysis.R</code></pre>
 <p>Quarto source:</p>
-<pre class="text"><code>blog/posts/post10/</code></pre>
+<pre class="text"><code>blog/posts/post9/</code></pre>
 <hr>
 </section>
 </section>
-<section id="blog-post-11" class="level2">
-<h2 class="anchored" data-anchor-id="blog-post-11">Blog Post 11</h2>
-<section id="topic-5" class="level3">
-<h3 class="anchored" data-anchor-id="topic-5">Topic</h3>
+<section id="blog-post-10" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post-10">Blog Post 10</h2>
+<section id="topic-3" class="level3">
+<h3 class="anchored" data-anchor-id="topic-3">Topic</h3>
 <p><em>To be added.</em></p>
 </section>
 <section id="data-8" class="level3">
@@ -584,6 +582,25 @@ images/blog5_pa_poverty_ranking.png</code></pre>
 </section>
 <section id="replication-8" class="level3">
 <h3 class="anchored" data-anchor-id="replication-8">Replication</h3>
+<p>Analysis script:</p>
+<pre class="text"><code>R/blog_post10_analysis.R</code></pre>
+<p>Quarto source:</p>
+<pre class="text"><code>blog/posts/post10/</code></pre>
+<hr>
+</section>
+</section>
+<section id="blog-post-11" class="level2">
+<h2 class="anchored" data-anchor-id="blog-post-11">Blog Post 11</h2>
+<section id="topic-4" class="level3">
+<h3 class="anchored" data-anchor-id="topic-4">Topic</h3>
+<p><em>To be added.</em></p>
+</section>
+<section id="data-9" class="level3">
+<h3 class="anchored" data-anchor-id="data-9">Data</h3>
+<p><em>To be added.</em></p>
+</section>
+<section id="replication-9" class="level3">
+<h3 class="anchored" data-anchor-id="replication-9">Replication</h3>
 <p>Analysis script:</p>
 <pre class="text"><code>R/blog_post11_analysis.R</code></pre>
 <p>Quarto source:</p>
@@ -598,12 +615,12 @@ images/blog5_pa_poverty_ranking.png</code></pre>
 <ul>
 <li>data are obtained or processed programmatically,</li>
 <li>raw data are kept separate from derived data,</li>
-<li>transformations are documented in R scripts,</li>
+<li>transformations are documented in R or Python scripts,</li>
 <li>sampling weights are used when required,</li>
 <li>figures are generated directly from the analysis,</li>
 <li>and output files are saved rather than manually copied into the website.</li>
 </ul>
-<p>Some external datasets may not be stored in the repository because of licensing, redistribution restrictions, or file-size limits. In those cases, the relevant blog-post section explains how to obtain the data.</p>
+<p>Some external datasets are not stored in the repository because of licensing, redistribution restrictions, or file-size limits. In those cases, the relevant blog-post section explains how to obtain the data.</p>
 </section>
 <section id="website" class="level2">
 <h2 class="anchored" data-anchor-id="website">Website</h2>

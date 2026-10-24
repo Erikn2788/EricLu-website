@@ -1,4 +1,3 @@
-
 # Computational Methods for Economists
 
 This repository contains my course website, blog posts, code, data-processing files, and visualizations for **Computational Methods for Economists**.
@@ -14,7 +13,7 @@ The website is built with Quarto and published through GitHub Pages.
 | Blog Post 3 | **How Unequal Was the COVID-19 Unemployment Shock Across Education Groups?** |
 | Blog Post 4 | **How Much Has the Federal Minimum Wage Lost in Purchasing Power?** |
 | Blog Post 5 | **Where Is Poverty Concentrated in Pennsylvania?** |
-| Blog Post 6 | *To be added* |
+| Blog Post 6 | **Matching Generations with SQL: How Much Does Income Persist Across Generations?** |
 | Blog Post 7 | *To be added* |
 | Blog Post 8 | *To be added* |
 | Blog Post 9 | *To be added* |
@@ -32,6 +31,7 @@ The website is built with Quarto and published through GitHub Pages.
 │       ├── post3/
 │       ├── post4/
 │       ├── post5/
+│       ├── post6/
 │       ├── ...
 │       └── post11/
 │
@@ -383,23 +383,118 @@ blog/posts/post5/
 
 ## Blog Post 6
 
-### Topic
+### Matching Generations with SQL: How Much Does Income Persist Across Generations?
 
-*To be added.*
+Blog Post 6 uses Python and SQL to study the relationship between mothers' earnings and their children's earnings as adults.
+
+The analysis combines two longitudinal datasets from the National Longitudinal Surveys. Using SQLite, I matched mothers with their children, calculated earnings across multiple years, and estimated intergenerational earnings elasticity (IGE).
+
+I compared estimates based on single-year earnings and multi-year average earnings. I also examined whether the estimated relationship changes with the child's age.
 
 ### Data
 
-*To be added.*
+The analysis uses two datasets:
+
+- **NLSY79:** Longitudinal data on the mothers.
+- **NLSY79 Child and Young Adult (NLSCYA):** Longitudinal data on their biological children.
+
+The selected survey years are:
+
+| Dataset | Survey Years |
+|---|---|
+| NLSY79 | 1998, 2000, 2002, 2004 |
+| NLSCYA | 2012, 2014, 2016, 2018, 2020 |
+
+The main variables include individual IDs, mother IDs, age at interview, and annual wage and salary earnings.
+
+The earnings data were adjusted to 2024 dollars using annual CPI-U values from the U.S. Bureau of Labor Statistics.
+
+The full NLS public-use files are not included in this repository because of their size and to avoid redistributing individual-level survey data.
+
+Data sources:
+
+- [NLSY79](https://www.nlsinfo.org/content/cohorts/nlsy79)
+- [NLSY79 Child and Young Adult](https://www.nlsinfo.org/content/cohorts/nlsy79-children)
+- [NLS Investigator](https://www.nlsinfo.org/content/access-data-investigator)
+- [BLS Consumer Price Index](https://www.bls.gov/cpi/)
 
 ### Replication
 
-Analysis script:
+The data download script is:
 
 ```text
-R/blog_post6_analysis.R
+python/blog_post6_download.py
 ```
 
-Quarto source:
+The main analysis script is:
+
+```text
+python/blog_post6_analysis.py
+```
+
+The required Python packages are `requests`, `pandas`, `numpy`, `matplotlib`, and `statsmodels`. The analysis also uses Python's built-in `sqlite3` library.
+
+Install the required packages:
+
+```bash
+py -m pip install requests pandas numpy matplotlib statsmodels
+```
+
+**Step 1: Download the original NLS data.**
+
+From the repository root, run:
+
+```bash
+py python/blog_post6_download.py
+```
+
+The download script retrieves the NLSY79 and NLSCYA public-use ZIP files and saves them in:
+
+```text
+data/raw/nlsy79_all_1979-2022.zip
+data/raw/nlscya_all_1979-2020.zip
+```
+
+These archives contain the complete source data and may take some time to download and process.
+
+**Step 2: Run the analysis.**
+
+```bash
+py python/blog_post6_analysis.py
+```
+
+The script extracts the required variables from the ZIP files, reshapes the longitudinal data, and uses SQL `JOIN`, `GROUP BY`, and `AVG()` operations to match mothers and children and calculate average earnings.
+
+The analysis restricts the main sample to mother-child pairs with at least two positive earnings observations for each generation between ages 30 and 40.
+
+The final matched sample contains **789 mother-child pairs from 620 mothers**.
+
+The script then estimates two IGE regressions:
+
+- Single-year earnings IGE: **0.2042**
+- Multi-year average earnings IGE: **0.2498**
+
+A separate age-interaction analysis examines whether the estimated IGE varies with the child's age. The interaction was not statistically significant (p = 0.7457).
+
+Derived summary results:
+
+```text
+data/derived/blog6_ige_comparison.csv
+data/derived/blog6_ige_by_age.csv
+```
+
+Figures:
+
+```text
+images/blog6_ige_comparison.png
+images/blog6_ige_by_age.png
+```
+
+The analysis uses standard errors clustered by mother to account for multiple children from the same mother.
+
+The reported results describe associations between mothers' and children's earnings, not causal effects.
+
+### Quarto Source
 
 ```text
 blog/posts/post6/
@@ -550,7 +645,7 @@ Whenever possible:
 - figures are generated directly from the analysis,
 - and output files are saved rather than manually copied into the website.
 
-Some external datasets may not be stored in the repository because of licensing, redistribution restrictions, or file-size limits. In those cases, the relevant blog-post section explains how to obtain the data.
+Some external datasets are not stored in the repository because of licensing, redistribution restrictions, or file-size limits. In those cases, the relevant blog-post section explains how to obtain the data.
 
 ## Website
 

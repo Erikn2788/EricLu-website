@@ -130,7 +130,7 @@
     "href": "blog/index.html",
     "title": "Blog",
     "section": "",
-    "text": "Where Is Poverty Concentrated in Pennsylvania?\n\n\nExploring county-level poverty rates across Pennsylvania using Census data and Python.\n\n\n\n\n\nOct 19, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nHow Much Has the Federal Minimum Wage Lost in Purchasing Power?\n\n\n\n\n\n\n\n\nOct 5, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nHow Unequal Was the COVID-19 Unemployment Shock Across Education Groups?\n\n\n\n\n\n\n\n\nSep 28, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Skills Show Up Most in Data, AI, and ML Jobs?\n\n\n\n\n\n\n\n\nSep 20, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Does a p-Value Really Mean?\n\n\n\n\n\n\n\n\nSep 14, 2026\n\n\n\n\n\nNo matching items"
+    "text": "Matching Generations with SQL: How Much Does Income Persist Across Generations?\n\n\nUsing Python and SQL to study intergenerational earnings mobility with NLSY data.\n\n\n\n\n\nOct 23, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhere Is Poverty Concentrated in Pennsylvania?\n\n\nExploring county-level poverty rates across Pennsylvania using Census data and Python.\n\n\n\n\n\nOct 19, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nHow Much Has the Federal Minimum Wage Lost in Purchasing Power?\n\n\n\n\n\n\n\n\nOct 5, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nHow Unequal Was the COVID-19 Unemployment Shock Across Education Groups?\n\n\n\n\n\n\n\n\nSep 28, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Skills Show Up Most in Data, AI, and ML Jobs?\n\n\n\n\n\n\n\n\nSep 20, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWhat Does a p-Value Really Mean?\n\n\n\n\n\n\n\n\nSep 14, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -369,5 +369,75 @@
     "title": "Where Is Poverty Concentrated in Pennsylvania?",
     "section": "Wrapping up",
     "text": "Wrapping up\nPoverty in Pennsylvania doesn’t split neatly into urban and rural. Philadelphia has the highest rate, its suburbs have the lowest, and several smaller counties farther west rank high as well. The part I didn’t expect was how big the gaps are between counties that sit right next to each other, especially in the southeast corner of the state. I’d like to come back to this with tract-level data to see what’s happening inside these counties."
+  },
+  {
+    "objectID": "blog/posts/post6/index.html",
+    "href": "blog/posts/post6/index.html",
+    "title": "Matching Generations with SQL: How Much Does Income Persist Across Generations?",
+    "section": "",
+    "text": "If you know how much a mother earns, how much does that tell you about what her children will earn as adults?\nEconomists call this intergenerational income mobility. I wanted to measure it myself with longitudinal data, which follow the same people over many years.\nThe tricky part was linking mothers and children across two datasets. I used SQL to match them and then estimated the intergenerational earnings elasticity (IGE). I also wanted to see whether using several years of earnings instead of one would change the answer."
+  },
+  {
+    "objectID": "blog/posts/post6/index.html#why-i-did-this",
+    "href": "blog/posts/post6/index.html#why-i-did-this",
+    "title": "Matching Generations with SQL: How Much Does Income Persist Across Generations?",
+    "section": "",
+    "text": "If you know how much a mother earns, how much does that tell you about what her children will earn as adults?\nEconomists call this intergenerational income mobility. I wanted to measure it myself with longitudinal data, which follow the same people over many years.\nThe tricky part was linking mothers and children across two datasets. I used SQL to match them and then estimated the intergenerational earnings elasticity (IGE). I also wanted to see whether using several years of earnings instead of one would change the answer."
+  },
+  {
+    "objectID": "blog/posts/post6/index.html#data",
+    "href": "blog/posts/post6/index.html#data",
+    "title": "Matching Generations with SQL: How Much Does Income Persist Across Generations?",
+    "section": "Data",
+    "text": "Data\nI used two National Longitudinal Surveys:\n\nNLSY79, which has followed a group of Americans since 1979.\nNLSY79 Child and Young Adult (NLSCYA), which follows the biological children of the women in NLSY79.\n\nEach child record includes the mother’s ID, so the two datasets can be linked.\nFor mothers, I used wage and salary earnings from the 1998, 2000, 2002, and 2004 surveys. For children, I used 2012, 2014, 2016, 2018, and 2020. The earnings usually refer to the year before the survey, so I converted them to 2024 dollars using that year’s CPI-U.\nFor the main analysis, I only used earnings between ages 30 and 40, and both mother and child needed at least two years of positive earnings."
+  },
+  {
+    "objectID": "blog/posts/post6/index.html#matching-mothers-and-children-with-sql",
+    "href": "blog/posts/post6/index.html#matching-mothers-and-children-with-sql",
+    "title": "Matching Generations with SQL: How Much Does Income Persist Across Generations?",
+    "section": "Matching mothers and children with SQL",
+    "text": "Matching mothers and children with SQL\nThe original datasets have thousands of variables. In Python, I kept just the IDs, ages, and earnings, then reshaped the data so each row is one person in one survey year.\nI loaded the records into SQLite as two tables: mother_income and child_income.\n\nStep 1: Link the IDs\nFirst, I matched children to their mothers with an INNER JOIN:\nSELECT DISTINCT\n    c.child_id,\n    c.mother_id\nFROM child_income AS c\nINNER JOIN mother_income AS m\n    ON c.mother_id = m.mother_id;\nJOIN connects the two tables on mother ID, and DISTINCT removes the duplicate pairs that come from having several survey years per person.\nThis first match covered 11,551 children, though many of them didn’t have enough valid earnings to use.\n\n\nStep 2: Calculate average earnings\nNext, I used GROUP BY and AVG() to get each person’s average earnings.\nHere’s a simplified version of the query for mothers:\nSELECT\n    m.mother_id,\n    AVG(m.earnings * (313.689 / p.cpi)) AS average_earnings\nFROM mother_income AS m\nJOIN cpi AS p\n    ON m.year - 1 = p.income_year\nWHERE m.age BETWEEN 30 AND 40\n  AND m.earnings &gt; 0\nGROUP BY m.mother_id\nHAVING COUNT(*) &gt;= 2;\nThe CPI join puts earnings in 2024 dollars. GROUP BY groups each mother’s records, and HAVING keeps only mothers with at least two valid years.\nI ran the same steps for children and joined the two results. The final sample has 789 mother-child pairs from 620 mothers."
+  },
+  {
+    "objectID": "blog/posts/post6/index.html#estimating-the-ige",
+    "href": "blog/posts/post6/index.html#estimating-the-ige",
+    "title": "Matching Generations with SQL: How Much Does Income Persist Across Generations?",
+    "section": "Estimating the IGE",
+    "text": "Estimating the IGE\nI regressed the child’s log earnings on the mother’s log earnings:\n\\[\n\\ln(Y_{\\text{child}}) = \\alpha + \\beta \\ln(Y_{\\text{mother}}) + \\varepsilon\n\\]\n\\(\\beta\\) is the IGE. An IGE of 0.25 means mothers who earn 1% more tend to have children who earn about 0.25% more.\nI ran this twice on the same 789 pairs, once with single-year earnings and once with multi-year averages, clustering standard errors by mother.\n\n\n\nComparison of single-year and multi-year IGE estimates.\n\n\nFigure 1. Estimated IGE using single-year and multi-year average earnings. Error bars show 95% confidence intervals.\nUsing each person’s most recent valid year, the IGE is 0.204. Using the average across several years, it goes up to 0.250, about 22% higher.\nAny single year might be unusual because of a job change, a stretch of unemployment, or a bonus. That kind of noise in mothers’ earnings would push the IGE toward zero, and averaging several years should reduce it.\nI haven’t formally tested whether the two estimates are significantly different, though, so I can’t say measurement error accounts for the whole gap."
+  },
+  {
+    "objectID": "blog/posts/post6/index.html#single-year-vs.-multi-year-average",
+    "href": "blog/posts/post6/index.html#single-year-vs.-multi-year-average",
+    "title": "Matching Generations with SQL: How Much Does Income Persist Across Generations?",
+    "section": "Single year vs. multi-year average",
+    "text": "Single year vs. multi-year average\n\n\n\nComparison of IGE estimated from single-year and multi-year average earnings.\n\n\nFigure 1. Estimated mother-child earnings elasticity using single-year and multi-year average earnings. Error bars show 95% confidence intervals.\nUsing a single year gives an IGE of 0.204. Using the multi-year average gives 0.250, about 22% higher.\nOne year of earnings can be unusual for plenty of reasons: a stretch of unemployment, a job change, a big one-time bonus. So a single year can be a noisy measure of what someone usually earns.\nIf those temporary swings add measurement error to mothers’ earnings, they would push the estimated IGE toward zero. Averaging several years may cut down on that.\nI haven’t formally tested whether the two estimates are statistically different, though. So the most I can say is that the earnings measure matters, not that averaging is always better or that measurement error explains the whole gap."
+  },
+  {
+    "objectID": "blog/posts/post6/index.html#does-the-childs-age-matter",
+    "href": "blog/posts/post6/index.html#does-the-childs-age-matter",
+    "title": "Matching Generations with SQL: How Much Does Income Persist Across Generations?",
+    "section": "Does the child’s age matter?",
+    "text": "Does the child’s age matter?\nThe other concern is life-cycle bias. Earnings change with age, so measuring children’s earnings early in their careers could give a different estimate.\nTo check, I used 2,151 child-year observations from the same 789 children and let the IGE vary with age, controlling for survey year.\n\n\n\nEstimated IGE across children’s ages.\n\n\nFigure 2. Model-implied IGE across ages 25–40, with 95% confidence intervals.\nThe IGE rises a little, from 0.230 at age 25 to 0.267 at age 40.\nBut the age interaction is not statistically significant (p = 0.746). The confidence intervals are wide, and there are only four observations at age 40. The line also assumes a straight-line relationship with age instead of estimating the IGE separately at each age.\nSo in this sample, I didn’t find significant evidence that the IGE changes with age."
+  },
+  {
+    "objectID": "blog/posts/post6/index.html#limitations",
+    "href": "blog/posts/post6/index.html#limitations",
+    "title": "Matching Generations with SQL: How Much Does Income Persist Across Generations?",
+    "section": "Limitations",
+    "text": "Limitations\n\nThe sample includes only mothers and their biological children, so it doesn’t represent fathers or other parent-child relationships.\nI kept only people with positive earnings and enough observations. People who were out of work or had missing earnings may drop out, which could affect the results.\nEven after adjusting for inflation, earnings from different survey years can differ in how they were reported and top-coded.\nI used selected survey years, not every earnings observation across each person’s career.\nThis is a correlation, not a causal effect. A positive IGE doesn’t mean that raising a mother’s earnings would by itself raise her child’s."
+  },
+  {
+    "objectID": "blog/posts/post6/index.html#takeaways",
+    "href": "blog/posts/post6/index.html#takeaways",
+    "title": "Matching Generations with SQL: How Much Does Income Persist Across Generations?",
+    "section": "Takeaways",
+    "text": "Takeaways\nAveraging earnings over several years gave a higher IGE than using a single year. How you measure earnings can change what you conclude about mobility.\nSQL was what made the linking work: it connected mothers and children and collapsed their repeated earnings records before I ran any regressions.\nA few caveats. The sample is only mothers and their biological children, and requiring positive earnings affects who ends up in it. And these are associations, not causal effects.\nThe thing I’ll remember most is how much of the work was in matching and preparing the data, not in the final regression."
+  },
+  {
+    "objectID": "blog/posts/post6/index.html#data-sources-and-code",
+    "href": "blog/posts/post6/index.html#data-sources-and-code",
+    "title": "Matching Generations with SQL: How Much Does Income Persist Across Generations?",
+    "section": "Data Sources and Code",
+    "text": "Data Sources and Code\n\nNLSY79\nNLSY79 Child and Young Adult\nBLS Consumer Price Index\n\nThe analysis uses Python, SQLite, Pandas, Statsmodels, and Matplotlib.\n\npython/blog_post6_download.py downloads the original NLS data.\npython/blog_post6_analysis.py prepares the data, does the SQL matching, estimates the IGE, and makes both figures.\n\nThe individual-level NLS data are not included in the public repo."
   }
 ]
